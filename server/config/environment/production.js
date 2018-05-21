@@ -15,13 +15,17 @@ module.exports = {
     || 8080,
 
   sequelize: {
-    uri: process.env.SEQUELIZE_URI
-      || 'sqlite://',
+    databas: 'dev-mabab',
+    username: 'dev-mabab',
+    password: 'dev-mabab',
     options: {
-      logging: false,
-      storage: 'dist.sqlite',
+      host: process.env.SEQUELIZE_URI || 'localhost',
+      dialect: 'mysql',
+      logging: true,
       define: {
-        timestamps: false
+        timestamps: false,
+        charset: 'utf8',
+        collate: 'utf8_general_ci'
       }
     }
   }

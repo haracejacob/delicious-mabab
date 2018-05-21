@@ -7,12 +7,17 @@ module.exports = {
 
   // Sequelize connection opions
   sequelize: {
-    uri: 'sqlite://',
+    database: 'dev_mabab',
+    username: 'devmabab',
+    password: 'devmabab',
     options: {
-      logging: false,
-      storage: 'dev.sqlite',
+      host: 'localhost',
+      dialect: 'mysql',
       define: {
-        timestamps: false
+        insecureAuth: true,
+        timestamps: false,
+        charset: 'utf8',
+        collate: 'utf8_general_ci'
       }
     }
   },

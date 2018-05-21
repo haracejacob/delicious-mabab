@@ -4,13 +4,17 @@
 
 'use strict';
 
-import path from 'path';
 import config from '../config/environment';
 import Sequelize from 'sequelize';
 
-var db = {
+const db = {
   Sequelize,
-  sequelize: new Sequelize(config.sequelize.uri, config.sequelize.options)
+  sequelize: new Sequelize(
+    config.sequelize.database,
+    config.sequelize.username,
+    config.sequelize.password,
+    config.sequelize.options
+  )
 };
 
 // Insert models below
