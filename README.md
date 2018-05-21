@@ -7,9 +7,26 @@ This project was generated with the [Angular Full-Stack Generator](https://githu
 ### Prerequisites
 
 - [Git](https://git-scm.com/)
-- [Node.js and npm](nodejs.org) Node >= 4.x.x, npm >= 2.x.x
+- [Node.js and npm](nodejs.org) Node >= 6.x.x(Recommend 8.x.x), npm >= 4.x.x
 - [Gulp](http://gulpjs.com/) (`npm install --global gulp`)
-- [SQLite](https://www.sqlite.org/quickstart.html)
+- [MySQL](https://dev.mysql.com/downloads/mysql/)
+
+### MySQL Configure
+
+- Login `mysql` with `root`
+- Create database `dev_mabab`
+
+`create database dev_mabab;`
+
+- Create user `devmabab`
+
+`devmabab@localhost identified with myql_native_password by 'devmabab';`
+- Grant privileges
+
+`grant all privileges on dev_mabab.* to devmabab@‘localhost’;`
+- Last
+
+`flush privileges;`
 
 ### Developing
 
