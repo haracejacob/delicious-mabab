@@ -1,34 +1,24 @@
-/**
- * Main application file
- */
+import express from 'express'
+import http from 'http'
+import db from './config/db'
+import config from './config/environment'
 
-'use strict';
-
-import express from 'express';
-import sqldb from './sqldb';
-import config from './config/environment';
-import http from 'http';
-import seedDatabaseIfNeeded from './config/seed';
-
-// Setup server
-var app = express();
-var server = http.createServer(app);
-require('./config/express').default(app);
-require('./routes').default(app);
+const app = express();
+const server = http.createServer(app)
+require('./config/express').default(app)
+require('./routes').default(app)
 
 // Start server
 function startServer() {
-  app.angularFullstack = server.listen(config.port, config.ip, function() {
+  app.deliciousMabab = server.listen(config.port, config.ip, () => {
     console.log('Express server listening on %d, in %s mode', config.port, app.get('env'));
   });
 }
 
-sqldb.sequelize.sync()
-  .then(seedDatabaseIfNeeded)
+db.sequelize.sync()
   .then(startServer)
-  .catch(function(err) {
+  .catch(err => {
     console.log('Server failed to start due to error: %s', err);
   });
 
-// Expose app
-exports = module.exports = app;
+export default app

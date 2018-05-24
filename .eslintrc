@@ -154,13 +154,7 @@
         "key-spacing": 2,                                           //enforce spacing between keys and values in object literal properties
         "keyword-spacing": [2, {
             "before": true,
-            "after": true,
-            "overrides": {
-                "if": {"after": false},
-                "for": {"after": false},
-                "while": {"after": false},
-                "catch": {"after": false}
-            }
+            "after": true
         }],                                                         //enforce spacing before and after keywords
         "linebreak-style": 2,                                       //disallow mixed 'LF' and 'CRLF' as linebreaks
         "lines-around-comment": 0,                                  //enforce empty lines around comments
@@ -211,7 +205,7 @@
         "require-jsdoc": 0,                                         //Require JSDoc comment
         "semi-spacing": 2,                                          //enforce spacing before and after semicolons
         "sort-imports": 0,                                          //sort import declarations within module
-        "semi": 2,                                                  //require or disallow use of semicolons instead of ASI
+        "semi": 0,                                                  //require or disallow use of semicolons instead of ASI
         "sort-vars": 0,                                             //sort variables within the same declaration block
         "space-before-blocks": 2,                                   //require or disallow a space before blocks
         "space-before-function-paren": [2, "never"],                //require or disallow a space before function opening parenthesis

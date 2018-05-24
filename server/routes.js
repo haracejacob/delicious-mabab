@@ -1,26 +1,31 @@
-/**
- * Main application routes
- */
-
-'use strict';
-
-import errors from './components/errors';
+import createError from 'http-errors'
 import path from 'path';
+import userRouter from './api/user'
+import authRouter from './auth'
 
-export default function(app) {
-  // Insert routes below
-  app.use('/api/things', require('./api/thing'));
-  app.use('/api/users', require('./api/user'));
+export default app => {
+  app.use('/api/user', userRouter)
+  app.use('/auth', authRouter);
 
-  app.use('/auth', require('./auth').default);
-
-  // All undefined asset or api routes should return a 404
-  app.route('/:url(api|auth|components|app|bower_components|assets)/*')
-   .get(errors[404]);
-
-  // All other routes should redirect to the index.html
   app.route('/*')
     .get((req, res) => {
       res.sendFile(path.resolve(`${app.get('appPath')}/index.html`));
     });
+
+
+  // catch 404 and forward to error handler
+  app.use((req, res, next) => {
+    next(createError(404));
+  });
+
+  // error handler
+  app.use((err, req, res) => {
+    // set locals, only providing error in development
+    res.locals.message = err.message;
+    res.locals.error = req.app.get('env') === 'development' ? err : {};
+
+    // render the error page
+    res.status(err.status || 500);
+    res.render('error');
+  });
 }
