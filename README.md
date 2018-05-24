@@ -1,6 +1,6 @@
 # delicious-mabab
 
-This project was generated with the [Angular Full-Stack Generator](https://github.com/DaftMonk/generator-angular-fullstack) version 4.2.2.
+This project was referenced with the [Angular Full-Stack Generator](https://github.com/DaftMonk/generator-angular-fullstack) version 4.2.2.
 
 ## Getting Started
 
@@ -8,10 +8,9 @@ This project was generated with the [Angular Full-Stack Generator](https://githu
 
 - [Git](https://git-scm.com/)
 - [Node.js and npm](nodejs.org) Node >= 6.x.x(Recommend 8.x.x), npm >= 2.x.x(Recommend 4.x.x)
-- [Gulp](http://gulpjs.com/) (`npm install --global gulp`)
 - [MySQL](https://dev.mysql.com/downloads/mysql/)
 
-### MySQL Configure
+### MySQL Configuration
 
 - Login `mysql` with `root`
 - Create database `dev_mabab`
@@ -32,12 +31,8 @@ This project was generated with the [Angular Full-Stack Generator](https://githu
 
 1. Run `npm install` to install server dependencies.
 
-2. Run `gulp serve` to start the development server. It should automatically open the client in your browser when ready.
+2. Run `npm install -g babel-cli` to start the server as `babel-node server`.
 
-## Build & development
+3. Run `npm start` to start the server
 
-Run `gulp build` for building and `gulp serve` for preview.
-
-## Testing
-
-Running `npm test` will run the unit tests with karma.
+4. Connect to `localhost:9000` to develop
