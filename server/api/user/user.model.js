@@ -1,14 +1,9 @@
-'use strict';
-
 import crypto from 'crypto';
 
-var validatePresenceOf = function(value) {
-  return value && value.length;
-};
+const validatePresenceOf = value => (value && value.length)
 
-export default function(sequelize, DataTypes) {
-  var User = sequelize.define('User', {
-
+export default (sequelize, DataTypes) => {
+  const User = sequelize.define('user', {
     _id: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -35,10 +30,15 @@ export default function(sequelize, DataTypes) {
         notEmpty: true
       }
     },
-    provider: DataTypes.STRING,
     salt: DataTypes.STRING
 
   }, {
+    tableName: 'user',
+    comment: '회원',
+    classMethods: {
+      associate: () => {
+      }
+    },
 
     /**
      * Virtual Getters
@@ -61,30 +61,30 @@ export default function(sequelize, DataTypes) {
       }
     },
 
-    /**
-     * Pre-save hooks
-     */
     hooks: {
       beforeBulkCreate(users, fields, fn) {
         var totalUpdated = 0;
         users.forEach(user => {
-          user.updatePassword(err => {
-            if(err) {
-              return fn(err);
-            }
+          user.updatePassword()
+          .then(() => {
             totalUpdated += 1;
-            if(totalUpdated === users.length) {
+            if (totalUpdated === users.length) {
               return fn();
             }
-          });
+          })
+          .catch(err => fn(err))
         });
       },
       beforeCreate(user, fields, fn) {
-        user.updatePassword(fn);
+        user.updatePassword()
+        .then(() => fn())
+        .catch(err => fn(err))
       },
       beforeUpdate(user, fields, fn) {
-        if(user.changed('password')) {
-          return user.updatePassword(fn);
+        if (user.changed('password')) {
+          user.updatePassword()
+          .then(() => fn())
+          .catch(err => fn(err))
         }
         fn();
       }
@@ -102,23 +102,20 @@ export default function(sequelize, DataTypes) {
        * @return {Boolean}
        * @api public
        */
-      authenticate(password, callback) {
-        if(!callback) {
-          return this.password === this.encryptPassword(password);
-        }
+      authenticate(password) {
+        return new Promise(async (resolve, reject) => {
+          try {
+            const pwdGen = await this.encryptPassword(password)
 
-        var _this = this;
-        this.encryptPassword(password, function(err, pwdGen) {
-          if(err) {
-            callback(err);
+            if (this.password === pwdGen) {
+              resolve(true)
+            } else {
+              resolve(false)
+            }
+          } catch (err) {
+            reject(err)
           }
-
-          if(_this.password === pwdGen) {
-            callback(null, true);
-          } else {
-            callback(null, false);
-          }
-        });
+        })
       },
 
       /**
@@ -129,30 +126,16 @@ export default function(sequelize, DataTypes) {
        * @return {String}
        * @api public
        */
-      makeSalt(...args) {
-        let byteSize;
-        let callback;
-        let defaultByteSize = 16;
+      makeSalt(byteSize = 16) {
+        return new Promise((resolve, reject) => {
+          crypto.randomBytes(byteSize, (err, salt) => {
+            if (err) {
+              reject(err)
+            }
 
-        if(typeof arguments[0] === 'function') {
-          callback = arguments[0];
-          byteSize = defaultByteSize;
-        } else if(typeof arguments[1] === 'function') {
-          callback = arguments[1];
-        } else {
-          throw new Error('Missing Callback');
-        }
-
-        if(!byteSize) {
-          byteSize = defaultByteSize;
-        }
-
-        return crypto.randomBytes(byteSize, function(err, salt) {
-          if(err) {
-            callback(err);
-          }
-          return callback(null, salt.toString('base64'));
-        });
+            resolve(salt.toString('base64'))
+          })
+        })
       },
 
       /**
@@ -163,28 +146,19 @@ export default function(sequelize, DataTypes) {
        * @return {String}
        * @api public
        */
-      encryptPassword(password, callback) {
-        if(!password || !this.salt) {
-          return callback ? callback(null) : null;
-        }
+      encryptPassword(password) {
+        return new Promise((resolve, reject) => {
+          if (!password || !this.salt) {
+            reject('password or salt is not exists')
+          }
 
-        var defaultIterations = 10000;
-        var defaultKeyLength = 64;
-        var salt = new Buffer(this.salt, 'base64');
+          const defaultIterations = 10000
+          const defaultKeyLength = 64
+          const salt = new Buffer(this.salt, 'base64')
 
-        if(!callback) {
-          // eslint-disable-next-line no-sync
-          return crypto.pbkdf2Sync(password, salt, defaultIterations, defaultKeyLength)
-                       .toString('base64');
-        }
-
-        return crypto.pbkdf2(password, salt, defaultIterations, defaultKeyLength,
-          function(err, key) {
-            if(err) {
-              callback(err);
-            }
-            return callback(null, key.toString('base64'));
-          });
+          const encryptPassword = crypto.pbkdf2Sync(password, salt, defaultIterations, defaultKeyLength, 'sha512').toString('base64')
+          resolve(encryptPassword)
+        })
       },
 
       /**
@@ -194,28 +168,26 @@ export default function(sequelize, DataTypes) {
        * @return {String}
        * @api public
        */
-      updatePassword(fn) {
-        // Handle new/update passwords
-        if(!this.password) return fn(null);
-
-        if(!validatePresenceOf(this.password)) {
-          fn(new Error('Invalid password'));
-        }
-
-        // Make salt with a callback
-        this.makeSalt((saltErr, salt) => {
-          if(saltErr) {
-            return fn(saltErr);
+      updatePassword() {
+        return new Promise(async (resolve, reject) => {
+          if (!this.password) {
+            reject('password is not exists')
           }
-          this.salt = salt;
-          this.encryptPassword(this.password, (encryptErr, hashedPassword) => {
-            if(encryptErr) {
-              fn(encryptErr);
-            }
-            this.password = hashedPassword;
-            fn(null);
-          });
-        });
+
+          if (!validatePresenceOf(this.password)) {
+            reject('Invalid password')
+          }
+          try {
+            const salt = await this.makeSalt()
+            this.salt = salt
+            const hashedPassword = await this.encryptPassword(this.password)
+            this.password = hashedPassword
+
+            resolve('done')
+          } catch (err) {
+            reject(err)
+          }
+        })
       }
     }
   });

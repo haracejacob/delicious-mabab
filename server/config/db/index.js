@@ -1,10 +1,7 @@
 /**
  * Sequelize initialization module
  */
-
-'use strict';
-
-import config from '../config/environment';
+import config from '../environment';
 import Sequelize from 'sequelize';
 
 const db = {
@@ -18,7 +15,7 @@ const db = {
 };
 
 // Insert models below
-db.Thing = db.sequelize.import('../api/thing/thing.model');
-db.User = db.sequelize.import('../api/user/user.model');
+const User = db.sequelize.import('../../api/user/user.model');
 
-module.exports = db;
+export default db;
+export { User }

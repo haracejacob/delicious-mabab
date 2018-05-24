@@ -1,13 +1,16 @@
 'use strict';
-import express from 'express';
-import config from '../config/environment';
-import {User} from '../sqldb';
+require('express-async-errors');
+import { Router } from 'express'
+import config from '../config/environment'
+import { User } from '../config/db'
+import local from './local'
+import { setup } from './local/passport'
 
 // Passport Configuration
-require('./local/passport').setup(User, config);
+setup(User, config);
 
-var router = express.Router();
+const router = Router();
 
-router.use('/local', require('./local').default);
+router.use('/local', local);
 
 export default router;

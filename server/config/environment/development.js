@@ -1,10 +1,6 @@
-'use strict';
-/*eslint no-process-env:0*/
-
 // Development specific configuration
 // ==================================
-module.exports = {
-
+export default {
   // Sequelize connection opions
   sequelize: {
     database: 'dev_mabab',
@@ -20,9 +16,5 @@ module.exports = {
         collate: 'utf8_general_ci'
       }
     }
-  },
-
-  // Seed database on startup
-  seedDB: true
-
-};
+  }
+}
