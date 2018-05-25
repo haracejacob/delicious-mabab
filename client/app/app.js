@@ -2,8 +2,8 @@
 
 import angular from 'angular'
 // import ngAnimate from 'angular-animate';
-// import ngCookies from 'angular-cookies';
-// import ngResource from 'angular-resource';
+import ngCookies from 'angular-cookies';
+import ngResource from 'angular-resource';
 // import ngSanitize from 'angular-sanitize';
 
 import uiRouter from 'angular-ui-router'
@@ -14,12 +14,14 @@ import {
   routeConfig
 } from './app.config'
 
-// import _Auth from '../components/auth/auth.module';
-// import account from './account';
+import account from './account';
 // import admin from './admin';
 import navbar from '../components/navbar/navbar.component'
 import footer from '../components/footer/footer.component'
 import main from './main/main.component'
+
+// Service
+import services from '../components/services'
 // import constants from './app.constants';
 // import util from '../components/util/util.module';
 
@@ -50,9 +52,14 @@ import './app.css'
 //   });
 
 angular.module('deliciousMababApp', [
-  uiRouter,
-  main,
-  navbar, footer
+  // modules
+  uiRouter, ngResource, ngCookies,
+  // pages
+  main, account,
+  // components
+  navbar, footer,
+  // services
+  services,
 ])
 .config(routeConfig)
 .run(() => {
