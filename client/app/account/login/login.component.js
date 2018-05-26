@@ -3,37 +3,43 @@ import template from './login.html'
 
 export class LoginComponent {
   /*@ngInject*/
-  constructor($state, AuthService) {
+  constructor($state, AuthService, AlertService) {
     this.$state = $state
     this.AuthService = AuthService
+    this.AlertService = AlertService
 
-    this.name = 'test'
-    this.email = 'test@test.com'
-    this.password = 'password'
-    this.submitted = false
-
-    // login validation
-    this.AuthService.isLoggedIn().then(res => {
-      if (res) {
-        this.$state.go('main')
+    this.email = ''
+    this.password = ''
+  }
+  validation(form) {
+    if (form.$invalid) {
+      if (form.$error.required) {
+        return '데이터 입력해 주십시오.'
       }
-    })
+      return '데이터가 올바르지 않습니다.'
+    }
+    return ''
   }
 
   login(form) {
-    this.submitted = true;
-    if (form.$valid) {
+    const msg = this.validation(form)
+    if (msg === '') {
       this.AuthService.login({
         email: this.email,
         password: this.password
       })
         .then(() => {
-          // Logged in, redirect to home
           this.$state.go('main');
         })
         .catch(err => {
-          this.errors.login = err.message;
+          this.AlertService.alert('Error', err.message)
+          this.errors.login = err.message
+
+          this.email = ''
+          this.password = ''
         });
+    } else {
+      this.AlertService.alert('Error', msg)
     }
   }
 }

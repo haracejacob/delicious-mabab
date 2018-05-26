@@ -76,10 +76,12 @@ angular.module('deliciousMababApp', [
   services,
 ])
   .config(routing)
-  .run(($rootScope, $location, $state, $transitions) => {
+  .run(($rootScope, $location, $transitions) => {
     'ngInject'
 
-    $transitions.onSuccess({}, function(transition) {
+    $transitions.onSuccess({}, async transition => {
+      $rootScope.status = 'login'
+
       const current = transition.to().name
 
       if (['login', 'signup'].includes(current)) {

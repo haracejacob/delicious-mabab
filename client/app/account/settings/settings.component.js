@@ -15,25 +15,26 @@ export class SettingsComponent {
 
 
   /*@ngInject*/
-  constructor(Auth) {
-    this.Auth = Auth;
+  constructor($state, AuthService) {
+    this.$state = $state
+    this.AuthService = AuthService
   }
 
-  changePassword(form) {
-    this.submitted = true;
+  // changePassword(form) {
+  //   this.submitted = true;
 
-    if (form.$valid) {
-      this.Auth.changePassword(this.user.oldPassword, this.user.newPassword)
-        .then(() => {
-          this.message = 'Password successfully changed.';
-        })
-        .catch(() => {
-          form.password.$setValidity('mongoose', false);
-          this.errors.other = 'Incorrect password';
-          this.message = '';
-        });
-    }
-  }
+  //   if (form.$valid) {
+  //     this.Auth.changePassword(this.user.oldPassword, this.user.newPassword)
+  //       .then(() => {
+  //         this.message = 'Password successfully changed.';
+  //       })
+  //       .catch(() => {
+  //         form.password.$setValidity('mongoose', false);
+  //         this.errors.other = 'Incorrect password';
+  //         this.message = '';
+  //       });
+  //   }
+  // }
 }
 
 export default angular.module('deliciousMababApp.settings', [])

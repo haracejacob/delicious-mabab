@@ -26,6 +26,18 @@ export async function index(req, res) {
  * Creates a new user
  */
 export async function create(req, res) {
+  // 중복 체크
+  const validUser = await User.find({
+    where: {
+      email: req.body.email,
+    },
+  })
+  if (validUser) {
+    return res.status(404).send({
+      msg: '이미 존재하는 이메일 입니다.'
+    })
+  }
+
   const newUser = User.build(req.body);
   newUser.setDataValue('role', 'user')
 
@@ -111,8 +123,6 @@ export async function me(req, res) {
   if (!user) {
     return res.status(401).end();
   }
-  console.log(123213213213)
-  console.log(user)
   res.json(user);
 }
 

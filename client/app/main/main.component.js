@@ -4,11 +4,13 @@ import template from './main.html'
 
 export class MainController {
   /*@ngInject*/
-  constructor(AuthService) {
+  constructor(AuthService, AlertService) {
     this.AuthService = AuthService
+    this.AlertService = AlertService
   }
 
   async $onInit() {
+
   }
 }
 

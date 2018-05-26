@@ -4,5 +4,10 @@ export default $stateProvider => {
   $stateProvider.state('login', {
     url: '/login',
     template: '<login></login>',
+    resolve: {
+      auth: async AuthService => {
+        await AuthService.isLoggedIn(true)
+      }
+    }
   })
 }
