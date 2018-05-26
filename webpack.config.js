@@ -12,6 +12,7 @@ export default {
       'angular-validation-match',
       'angular-cookies',
       'angular-ui-bootstrap',
+      'angular-material',
       'lodash'
     ]
   },
