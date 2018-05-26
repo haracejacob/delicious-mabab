@@ -1,6 +1,6 @@
 import template from './adNavbar.html'
 
-export class NavbarComponent {
+export class AdNavbarComponent {
   constructor() {
     'ngInject'
 
@@ -11,6 +11,6 @@ export class NavbarComponent {
 export default angular.module('directives.adNavbar', [])
   .component('adNavbar', {
     template,
-    controller: NavbarComponent
+    controller: AdNavbarComponent
   })
   .name;
