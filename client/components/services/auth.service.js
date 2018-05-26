@@ -105,7 +105,7 @@ export default function AuthService($state, $location, $cookies, $q, UserService
         const user = await Auth.getCurrentUser()
         const userRole = _.get(user, 'role')
 
-        if (role == 'admin') {
+        if (userRole == 'admin') {
           resolve(true)
         } else {
           const hasRole = role === userRole
