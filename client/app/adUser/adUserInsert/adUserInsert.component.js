@@ -3,21 +3,28 @@ import routing from './adUserInsert.routes'
 import template from './adUserInsert.html'
 
 export class AdminUserInsertController {
-  /*@ngInject*/
-  constructor($http, $resource) {
-    this.$http = $http
-    this.$resource = $resource
-  }
+    /*@ngInject*/
+    constructor($http, $resource, $uibModal) {
+        this.$http = $http;
+        this.$resource = $resource;
+        this.$uibModal = $uibModal;
+    }
 
-  async $onInit() {
-    console.log('AdminUserInsertController')
-  }
+    async $onInit() {
+        console.log('AdminUserInsertController')
+    }
+
+    closeModal() {
+        console.log("dd");
+        window.history.back();
+    }
+
 }
 
 export default angular.module('deliciousMababApp.adUserInsert', [uiRouter])
-  .config(routing)
-  .component('adUserInsert', {
-    template,
-    controller: AdminUserInsertController
-  })
-  .name
+    .config(routing)
+    .component('adUserInsert', {
+        template,
+        controller: AdminUserInsertController
+    })
+    .name
