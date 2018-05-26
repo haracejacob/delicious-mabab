@@ -1,0 +1,43 @@
+.white,
+.white a {
+    color: #fff;
+}
+
+#sidebar {
+    padding: 5px;
+    border-radius: 0px;
+    color: white;
+    background-color: black;
+    height: 500px;
+}
+
+#sidebar>ul>li {
+    border-bottom: 1px solid #cccccc;
+    border-top: 1px solid #cccccc;
+}
+
+#sidebar>ul>li.active>a {
+    background-color: gray;
+    color: black;
+    border-radius: 0px;
+    font-weight: bold;
+}
+
+#sidebar>ul>li.active>a,
+.nav>li>a:focus {
+    background-color: gray;
+    color: black;
+    border-radius: 0px;
+    font-weight: bold;
+}
+
+#sidebar>ul>li>a:hover {
+    background-color: gray;
+    color: black;
+    border-radius: 0px;
+    font-weight: bold;
+}
+
+#sidebar>ul>li>a {
+    color: white;
+}
