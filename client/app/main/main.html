@@ -1,8 +1,8 @@
 ﻿<div class="container-fluid row" id="mainDiv">
 	<div class="container-fluid reserveAlert">
 		<h5>예약한 상품이 준비중입니다! 조금만 기다려주세요!</h5>
-		<a onclick="if(demo.style.height!=''){demo.style.height='';demo.style.marginTop='10px';}else{demo.style.height='0px';demo.style.marginTop='';}" class="btn btn-primary" data-toggle="collapse" data-target="#demo">자세히</a>
-		<div id="demo" class="container-fluid">
+		<a onclick="if(demo.style.height!=''){demo.style.height='';demo.style.marginTop='10px';}else{demo.style.height='0px';demo.style.marginTop='';}" class="btn btn-warning" data-toggle="collapse" data-target="#demo">자세히</a>
+		<div id="demo" class="container-fluid" style="height:0px;">
 			<hr>
 			메뉴 : 아메리카노 3잔<br>
 			신청 시간 : 23시 61분<br>
@@ -12,8 +12,8 @@
 	</div>
 	<div class="container-fluid reserveAlert" style="background:#603527;">
 		<h5 style="float:left;">따끈한 커피가 준비되었습니다! 찾아가주세요!</h5>
-		<a onclick="if(demo2.style.height!=''){demo2.style.height='';demo2.style.marginTop='10px';}else{demo2.style.height='0px';demo2.style.marginTop='';}" class="btn btn-primary" data-toggle="collapse" data-target="#demo">자세히</a>
-		<div id="demo2" class="container-fluid">
+		<a onclick="if(demo2.style.height!=''){demo2.style.height='';demo2.style.marginTop='10px';}else{demo2.style.height='0px';demo2.style.marginTop='';}" class="btn btn-warning" data-toggle="collapse" data-target="#demo">자세히</a>
+		<div id="demo2" class="container-fluid" style="height:0px;">
 			<hr>
 			메뉴 : 아메리카노 3잔<br>
 			신청 시간 : 23시 61분<br>
@@ -23,43 +23,35 @@
 	</div>
 	<div class="col-sm-6 viewColl">
 		<h2>신상품</h2>
-		<div>
-			<div style="position:absolute;top:auto;height:200px;left:50%;width:300px;margin-left:-150px;z-index:1;">
-				<img src="../../assets/img/coffee.jpg" style="border:10px solid white;box-shadow:0px 2px 8px rgba(0,0,0,0.3);border-radius:100%;width:200px;height:auto;">
-				<h4>아메리카노</h4>
+		<div onclick="window.location.href='menu';">
+			<div style="position:absolute;top:auto;height:200px;left:50%;width:200px;margin-left:-100px;z-index:1;">
+				<img src="../../assets/img/coffee.jpg" style="border:10px solid #603527;box-shadow:0px 2px 8px rgba(0,0,0,0.3);border-radius:100%;width:200px;height:auto;">
 			</div>
-			<div style="position:absolute;top:auto;height:200px;left:50%;width:300px;margin-left:-150px;transform:scale(0.6) translate(-60px,0px);transform-origin:left;">
-				<img src="../../assets/img/coffee.jpg" style="border:10px solid white;box-shadow:0px 2px 8px rgba(0,0,0,0.3);border-radius:100%;width:200px;height:auto;">
-				<h4>아메리카노</h4>
+			<div style="position:absolute;top:auto;height:200px;left:50%;width:200px;margin-left:-100px;transform:scale(0.6) translate(-80px,0px);transform-origin:left;">
+				<img src="../../assets/img/coffee.jpg" style="border:10px solid #603527;box-shadow:0px 2px 8px rgba(0,0,0,0.3);border-radius:100%;width:200px;height:auto;">
 			</div>
-			<div style="position:absolute;top:auto;height:200px;left:50%;width:300px;margin-left:-150px;transform:scale(0.6) translate(60px,0px);transform-origin:right;">
-				<img src="../../assets/img/coffee.jpg" style="border:10px solid white;box-shadow:0px 2px 8px rgba(0,0,0,0.3);border-radius:100%;width:200px;height:auto;">
-				<h4>아메리카노</h4>
+			<div style="position:absolute;top:auto;height:200px;left:50%;width:200px;margin-left:-100px;transform:scale(0.6) translate(80px,0px);transform-origin:right;">
+				<img src="../../assets/img/coffee.jpg" style="border:10px solid #603527;box-shadow:0px 2px 8px rgba(0,0,0,0.3);border-radius:100%;width:200px;height:auto;">
 			</div>
 		</div>
 	</div>
 	<div class="col-sm-6 viewColl">
-		<h2>인기메뉴</h2>
-		<div>
-			<div style="position:absolute;top:auto;height:200px;left:50%;width:300px;margin-left:-150px;z-index:1;">
-				<img src="../../assets/img/coffee.jpg" style="border:10px solid white;box-shadow:0px 2px 8px rgba(0,0,0,0.3);border-radius:100%;width:200px;height:auto;">
-				<h4>아메리카노</h4>
+		<h2>인기</h2>
+		<div onclick="window.location.href='menu';">
+			<div style="position:absolute;top:auto;height:200px;left:50%;width:200px;margin-left:-100px;z-index:1;">
+				<img src="../../assets/img/coffee.jpg" style="border:10px solid #603527;box-shadow:0px 2px 8px rgba(0,0,0,0.3);border-radius:100%;width:200px;height:auto;">
 			</div>
-			<div style="position:absolute;top:auto;height:200px;left:50%;width:300px;margin-left:-150px;transform:scale(0.6) translate(-60px,0px);transform-origin:left;">
-				<img src="../../assets/img/coffee.jpg" style="border:10px solid white;box-shadow:0px 2px 8px rgba(0,0,0,0.3);border-radius:100%;width:200px;height:auto;">
-				<h4>아메리카노</h4>
+			<div style="position:absolute;top:auto;height:200px;left:50%;width:200px;margin-left:-100px;transform:scale(0.6) translate(-80px,0px);transform-origin:left;">
+				<img src="../../assets/img/coffee.jpg" style="border:10px solid #603527;box-shadow:0px 2px 8px rgba(0,0,0,0.3);border-radius:100%;width:200px;height:auto;">
 			</div>
-			<div style="position:absolute;top:auto;height:200px;left:50%;width:300px;margin-left:-150px;transform:scale(0.6) translate(60px,0px);transform-origin:right;">
-				<img src="../../assets/img/coffee.jpg" style="border:10px solid white;box-shadow:0px 2px 8px rgba(0,0,0,0.3);border-radius:100%;width:200px;height:auto;">
-				<h4>아메리카노</h4>
+			<div style="position:absolute;top:auto;height:200px;left:50%;width:200px;margin-left:-100px;transform:scale(0.6) translate(80px,0px);transform-origin:right;">
+				<img src="../../assets/img/coffee.jpg" style="border:10px solid #603527;box-shadow:0px 2px 8px rgba(0,0,0,0.3);border-radius:100%;width:200px;height:auto;">
 			</div>
 		</div>
 	</div>
 	<div class="col-sm-4">
 		<h2>2018년 2월</h2>
 		<ul class="list-group">
-			<li class="list-group-item">2/4 아메리카노 1잔</li>
-			<li class="list-group-item">2/4 아메리카노 1잔</li>
 			<li class="list-group-item">2/4 아메리카노 1잔</li>
 			<li class="list-group-item">2/4 아메리카노 1잔</li>
 		</ul>
@@ -70,11 +62,34 @@
 			<li class="list-group-item">2/4 아메리카노 1잔</li>
 			<li class="list-group-item">2/4 아메리카노 1잔</li>
 			<li class="list-group-item">2/4 아메리카노 1잔</li>
-			<li class="list-group-item">2/4 아메리카노 1잔</li>
 		</ul>
 	</div>
 	<div class="col-sm-4">
 		<h2>2018년 4월</h2>
+		<ul class="list-group">
+			<li class="list-group-item">2/4 아메리카노 1잔</li>
+			<li class="list-group-item">2/4 아메리카노 1잔</li>
+			<li class="list-group-item">2/4 아메리카노 1잔</li>
+			<li class="list-group-item">2/4 아메리카노 1잔</li>
+		</ul>
+	</div>
+	<div class="col-sm-4">
+		<h2>2018년 5월</h2>
+		<ul class="list-group">
+			<li class="list-group-item">2/4 아메리카노 1잔</li>
+			<li class="list-group-item">2/4 아메리카노 1잔</li>
+		</ul>
+	</div>
+	<div class="col-sm-4">
+		<h2>2018년 6월</h2>
+		<ul class="list-group">
+			<li class="list-group-item">2/4 아메리카노 1잔</li>
+			<li class="list-group-item">2/4 아메리카노 1잔</li>
+			<li class="list-group-item">2/4 아메리카노 1잔</li>
+		</ul>
+	</div>
+	<div class="col-sm-4">
+		<h2>2018년 7월</h2>
 		<ul class="list-group">
 			<li class="list-group-item">2/4 아메리카노 1잔</li>
 			<li class="list-group-item">2/4 아메리카노 1잔</li>
