@@ -1,5 +1,6 @@
 @import '~bootstrap/dist/css/bootstrap.css';
 @import '~angular-material/angular-material.min.css';
+@import '../components/adSidebar/sideBar.css';
 
 body{
 	padding:0px;
