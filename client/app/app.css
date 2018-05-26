@@ -35,6 +35,8 @@ body{
 #menuDiv{
 	margin:0px;
 	background:white;
+	padding-left:20px;
+	padding-right:20px;
 }
 .plusMinus{
 	width:20px;
@@ -78,11 +80,12 @@ menu{
 }
 #mainDiv>.reserveAlert{
 	margin:0px;
-	color:white;
+	color:black;
 	margin-bottom:20px;
 	padding:15px;
-	background:#08b;
+	background:#fff;
 	border-radius:10px;
+	border:2px solid #f0ad4e;
 }
 #mainDiv>.reserveAlert>h5{
 	float:left;
@@ -101,6 +104,8 @@ menu{
 	width:100%;
 	margin:0px;
 	margin-bottom:20px;
+	background:#f0ad4e;
+	border-top:1px solid #f0ad4e;
 }
 #mainDiv>.viewColl{
 	text-align:center;
@@ -108,5 +113,5 @@ menu{
 #mainDiv>.viewColl>div{
 	text-align:center;
 	height:240px;
-	margin-bottom:40px;
+	margin-bottom:20px;
 }
