@@ -4,11 +4,8 @@ import template from './main.html'
 
 export class MainController {
   /*@ngInject*/
-  constructor($state, $http, $resource, AuthService) {
-    this.$http = $http
-    this.$resource = $resource
+  constructor(AuthService) {
     this.AuthService = AuthService
-    this.$state = $state
   }
 
   async $onInit() {

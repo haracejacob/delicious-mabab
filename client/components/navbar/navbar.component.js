@@ -1,10 +1,8 @@
 import template from './navbar.html'
 
 export class NavbarComponent {
-  constructor($state) {
+  constructor() {
     'ngInject'
-    this.$state = $state
-    this.disabled = true
   }
 
   async $onInit() {
