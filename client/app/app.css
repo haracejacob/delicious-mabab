@@ -1,8 +1,7 @@
-@import '~bootstrap/dist/css/bootstrap.css'
+@import '~bootstrap/dist/css/bootstrap.css';
+@import '~angular-material/angular-material.min.css';
 
 body{
-background:black;
-
 }
 .career{
 	transition-duration:.6s;
@@ -13,50 +12,4 @@ background:black;
 .career:hover{
 	transition-duration:0s;
 	box-shadow:0px 4px 64px rgba(0,0,0,0.25);
-}
-#topui{
-	cursor:default;
-	background:url(../temp/img.jpg) 0% 0% / 100% fixed no-repeat,
-		url(../temp/img3.png) 0% 0% / 100% fixed;
-	margin:0px;
-	transform-origin:50% 100%;
-	z-index:10000;
-}
-#headLogo{
-	width:200px;
-	margin-left:0px;
-}
-#topui>div>p{
-	opacity:0.85;
-}
-#nav{
-	transition-duration:.6s;
-	padding:20px;
-	background:url(../temp/img2.png) 0% 0% / 100% fixed no-repeat,
-		url(../temp/img3.png) 0% 0% / 100% fixed;
-	top:0px;
-	width:100%;
-	z-index:99;
-}
-#nav_white{
-	background:white;
-	opacity:0.2;
-	position:absolute;
-	top:0px;
-	left:0px;
-	width:100%;
-	height:100%;
-	z-index:-1;
-}
-#loginForm{
-	padding-bottom:60px;
-}
-#tabs{
-	padding-top:60px;
-}
-#navMenu{
-	width:100%;
-}
-#navLogin{
-	width:100%;
 }
