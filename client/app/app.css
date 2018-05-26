@@ -1,3 +1,118 @@
 @import '~bootstrap/dist/css/bootstrap.css';
 @import '~angular-material/angular-material.min.css';
 @import '../components/adSidebar/sideBar.css';
+
+body{
+	padding:0px;
+}
+.btn-login{
+	outline:none!important;
+}
+.btn-register{
+	outline:none!important;
+}
+
+/*menu.html*/
+.career{
+	transition-duration:.6s;
+	margin:auto;
+	margin-bottom:30px;
+	padding:14px;
+	width:80%;
+	border-radius:6px;
+	border:0px solid #ccc;
+	text-align:center;
+}
+.career:hover{
+	transition-duration:0s;
+	box-shadow:0px 4px 64px rgba(0,0,0,0.25),
+	0px 1px 4px rgba(0,0,0,0.25);
+}
+.career>img{
+	width:100px;
+	height:100px;
+	margin:auto;
+}
+#menuDiv{
+	margin:0px;
+	background:white;
+	padding-left:20px;
+	padding-right:20px;
+}
+.plusMinus{
+	width:20px;
+	height:20px;
+	border-radius:100%;
+	padding:0px;
+	outline:none!important;
+}
+menu{
+	padding:0px;
+}
+.dropdownTest{
+	z-index:1;
+	border-radius:4px;
+	background:white;
+	box-shadow:0px 1px 4px rgba(0,0,0,0.4),
+	0px 4px 16px rgba(0,0,0,0.2);
+	position:absolute;
+	top:40px;
+	width:110px;
+}
+.dropdownTest>p{
+	height:40px;
+	line-height:40px;
+	padding:0px;
+	margin:0px;
+	text-align:center;
+}
+.dropdownTest>p:hover{
+	background:#eee;
+}
+.dropdownTest>hr{
+	margin:0px;
+}
+
+
+/*main.html*/
+#mainDiv{
+	margin:0px;
+	background:white;
+}
+#mainDiv>.reserveAlert{
+	margin:0px;
+	color:black;
+	margin-bottom:20px;
+	padding:15px;
+	background:#fff;
+	border-radius:10px;
+	border:2px solid #f0ad4e;
+}
+#mainDiv>.reserveAlert>h5{
+	float:left;
+}
+#mainDiv>.reserveAlert>a{
+	float:right;
+	margin-left:15px;
+}
+#mainDiv>.reserveAlert>div{
+	float:left;
+	width:100%;
+	overflow:hidden;
+	transition-duration:.5s;
+}
+#mainDiv>.reserveAlert>hr{
+	width:100%;
+	margin:0px;
+	margin-bottom:20px;
+	background:#f0ad4e;
+	border-top:1px solid #f0ad4e;
+}
+#mainDiv>.viewColl{
+	text-align:center;
+}
+#mainDiv>.viewColl>div{
+	text-align:center;
+	height:240px;
+	margin-bottom:20px;
+}

@@ -1,3 +1,84 @@
-<div class="container">
-  menu page 입니다
+﻿<div class="container-flid" id="menuDiv">
+	<div class="container-fluid col-sm-12" style="margin:0px;margin-bottom:15px;">
+		<a class="btn btn-warning" style="margin-right:10px;" onclick="drop2.style.display='none';if(drop1.style.display!=''){drop1.style.display='';}else{drop1.style.display='none';}">분류 : 음료</a>
+		<a class="btn btn-warning" style="margin-right:10px;" onclick="drop1.style.display='none';if(drop2.style.display!=''){drop2.style.display='';}else{drop2.style.display='none';}">인기순</a>
+		<div class="dropdownTest" id="drop1" style="
+	left:10px;display:none;" onclick="drop1.style.display='none';">
+			<p>음료</p>
+			<hr>
+			<p>디저트</p>
+			<hr>
+			<p>맛있는거</p>
+		</div>
+		<div class="dropdownTest" id="drop2" style="left:100px;display:none;" onclick="drop2.style.display='none';">
+			<p>인기순</p>
+			<hr>
+			<p>출시순</p>
+		</div>
+	</div>
+	<div class="container-fluid col-sm-4" style="margin:0px;">
+		<div class="col-sm-12" style="margin:0px;margin-top:10px;margin-bottom:30px;padding:20px;box-shadow:0px 2px 14px rgba(0,0,0,0.2);">
+			<h2>영수증</h2>
+			<hr style="width:100%;margin-bottom:-30px;">
+			<div ng-if="count[0]>0">
+				<hr style="width:100%;opacity:0;">
+				<h5 style="float:left;">아메리카노<br><button ng-click="count[0]=count[0]-1" class="btn btn-sm btn-warning plusMinus">-</button> {{count[0]}}개 <button ng-click="count[0]=count[0]+1" class="btn btn-sm btn-warning plusMinus">+</button>
+				</h5>
+				<h5 style="float:right;">₩ {{3000*count[0]}}<br></h5>
+			</div>
+			<div ng-if="count[1]>0">
+				<hr style="width:100%;opacity:0;">
+				<h5 style="float:left;">카푸치노<br><button ng-click="count[1]=count[1]-1" class="btn btn-sm btn-warning plusMinus">-</button> {{count[1]}}개 <button ng-click="count[1]=count[1]+1" class="btn btn-sm btn-warning plusMinus">+</button></h5>
+				<h5 style="float:right;">₩ {{3000*count[1]}}<br></h5>
+			</div>
+			<div ng-if="count[2]>0">
+				<hr style="width:100%;opacity:0;">
+				<h5 style="float:left;">티라미수<br><button ng-click="count[2]=count[2]-1" class="btn btn-sm btn-warning plusMinus">-</button> {{count[2]}}개 <button ng-click="count[2]=count[2]+1" class="btn btn-sm btn-warning plusMinus">+</button></h5>
+				<h5 style="float:right;">₩ {{3000*count[2]}}<br></h5>
+			</div>
+			<hr style="width:100%;">
+			<h5 style="float:right;">합계 : ₩ {{3000*count[0]+3000*count[1]+3000*count[2]}}</h5>
+			<a href="#" class="btn btn-warning" onclick="popup('id','아메리카노','3000원');" style="width:100%;">예약하기</a>
+		</div>
+	</div>
+	<div class="container-fluid col-sm-8 row" style="padding:0px;margin:0px;">
+
+		<div class="container-fluid col-sm-4" style="padding:0px;margin:0px;">
+			<div class="career card container-fluid" style="padding:14px;width:80%;border-radius:6px;border:0px solid #ccc;margin-bottom:30px;text-align:center;">
+				<img class="card-img-top" src="../../assets/img/coffee.jpg" style="width:100px;height:100px;margin:auto;">
+				<div class="card-body" style="text-align:center;">
+					<h5 class="card-title"><b>아메리카노</b></h5>
+					<h6>음료</h6>
+					<a href="#" ng-click="count[0]=count[0]+1" class="btn btn-warning">&#8361;3000</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="container-fluid col-sm-4" style="padding:0px;margin:0px;">
+			<div class="career card container-fluid" style="padding:14px;width:80%;border-radius:6px;border:0px solid #ccc;margin-bottom:30px;text-align:center;">
+				<img class="card-img-top" src="../../assets/img/coffee2.jpg" style="width:100px;height:100px;margin:auto;">
+				<div class="card-body" style="text-align:center;">
+					<h5 class="card-title"><b>카푸치노</b></h5>
+					<h6>음료</h6>
+					<a href="#" ng-click="count[1]=count[1]+1" class="btn btn-warning">&#8361;3000</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="container-fluid col-sm-4" style="padding:0px;margin:0px;">
+			<div class="career card container-fluid" style="padding:14px;width:80%;border-radius:6px;border:0px solid #ccc;margin-bottom:30px;text-align:center;">
+				<img class="card-img-top" src="../../assets/img/tiramisu.jpg" style="width:100px;height:100px;margin:auto;">
+				<div class="card-body" style="text-align:center;">
+					<h5 class="card-title"><b>티라미수</b></h5>
+					<h6>디저트</h6>
+					<a href="#" ng-click="count[2]=count[2]+1" class="btn btn-warning">&#8361;3000</a>
+				</div>
+			</div>
+		</div>
+
+
+
+
+
+	</div>
 </div>

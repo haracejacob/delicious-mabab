@@ -12,6 +12,11 @@ export class MenuController {
   async $onInit() {
     console.log('MenuController')
   }
+
+  test(){
+    console.log("hey")
+    $ctrl.count[0]=$ctrl.count[0]-1
+  }
 }
 
 export default angular.module('deliciousMababApp.menu', [uiRouter])

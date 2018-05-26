@@ -1,13 +1,57 @@
-<header class="hero-unit" id="banner">
-  <div class="container">
-    <h1>Header</h1>
-  </div>
-</header>
-
-<div class="container">
-  <div class="row">
-    <div class="col-lg-12">
-      <h1 class="page-header">MAIN</h1>
-    </div>
-  </div>
+﻿<div class="container-fluid row" id="mainDiv">
+	<div class="container-fluid reserveAlert">
+		<h5>예약한 상품이 준비중입니다! 조금만 기다려주세요!</h5>
+		<a onclick="if(demo.style.height!=''){demo.style.height='';demo.style.marginTop='10px';}else{demo.style.height='0px';demo.style.marginTop='';}" class="btn btn-warning" data-toggle="collapse" data-target="#demo">자세히</a>
+		<div id="demo" class="container-fluid" style="height:0px;">
+			<hr>
+			메뉴 : 아메리카노 3잔<br>
+			신청 시간 : 23시 61분<br>
+			예약 시간 : 23시 61분<br>
+			예상 준비 완료 시간 : 23시 61분<br>
+		</div>
+	</div>
+  
+  <div class="col-sm-3"></div>
+  <div class="col-sm-6" style="text-align:center;">
+    <h2 style="margin-top:0px;">마이페이지</h2><br>
+    <a style="float:left;margin-right:15px;" class="btn btn-warning">&lt;</a>
+    <h2 style="font-size:15px;margin-top:0px;display:inline;">2018년 4월 구매내역</h2>
+    <a style="float:right;margin-left:15px;" class="btn btn-warning">&gt;</a>
+    <table class="table table-striped text-center">
+      <thead>
+        <tr>
+          <th class="text-center">구매날짜</th>
+          <th class="text-center">구매상품</th>
+          <th class="text-center">수량</th>
+        </tr>
+      </thead>
+      <tr>
+        <td>2018-04-01 11:02:25</td>
+        <td>아메리카노</td>
+        <td>2</td>
+      </tr>
+      <tr>
+        <td>2018-04-01 11:02:25</td>
+        <td>아메리카노</td>
+        <td>4</td>
+      </tr>
+      <tr>
+        <td>2018-04-01 11:02:25</td>
+        <td>아메리카노</td>
+        <td>4</td>
+      </tr>
+      <tr>
+        <td>2018-04-01 11:02:25</td>
+        <td>아메리카노</td>
+        <td>3</td>
+      </tr>
+      <tr>
+        <td>2018-04-01 11:02:25</td>
+        <td>아메리카노</td>
+        <td>6</td>
+      </tr>
+   	</table>
+	</div>
+  
+  <div class="col-sm-3"></div>
 </div>
