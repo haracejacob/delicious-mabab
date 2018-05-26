@@ -6,9 +6,9 @@ export class SignupComponent {
   constructor($state, AuthService) {
     this.$state = $state
     this.AuthService = AuthService
-    this.name = 'test'
-    this.email = 'test@test.com'
-    this.password = 'password'
+    this.name = ''
+    this.email = ''
+    this.password = ''
     this.submitted = false
 
     // login validation
