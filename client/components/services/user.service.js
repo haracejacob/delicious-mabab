@@ -12,6 +12,10 @@ export default function UserService($resource) {
       method: 'PUT',
       url: '/api/user/:id/password',
     },
+    change: {
+      method: 'PUT',
+      url: '/api/user/:id',
+    },
     login: {
       method: 'POST',
       url: '/auth/local'

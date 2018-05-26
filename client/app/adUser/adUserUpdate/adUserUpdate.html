@@ -1,47 +1,52 @@
+<!-- modal(유저 상세보기)-->
 <div class="container">
-    <!-- modal(유저 상세보기)-->
-    <div id="myEditModal" class="modal fade" role="dialog">
-        <div class="modal-dialog modal-md">
 
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">×</button>
-                    <h4 class="modal-title">유저 정보</h4>
+    <div class="col-md-6">
+
+        <div class="modal-header">
+            <button type="button" class="close" ng-click="$ctrl.cancel()">×</button>
+            <h4 class="modal-title">유저 정보</h4>
+        </div>
+
+        <div class="modal-body">
+            <form>
+                <!-- 유저 이름 -->
+                <div class="form-group">
+                    <label class="control-label" for="userName"> 이름</label>
+                    <input type="text" class="form-control" name="userName" ng-model="$ctrl.user.name"/>
                 </div>
 
-
-                <div class="modal-body">
-                    <form>
-                        <!-- 유저 이름 -->
-                        <div class="form-group">
-                            <label class="control-label" for="userName"> 이름</label>
-                            <input type="text" class="form-control" name="userName" />
-                        </div>
-
-                        <!-- 유저 이메일 -->
-                        <div class="form-group">
-                            <label class="control-label" for="userEmail"> 이메일</label>
-                            <input type="text" class="form-control" name="userEmail" />
-                        </div>
-
-                        <!-- 권한 -->
-                        <div class="form-group">
-                            <label class="control-label" for="userAuth"> 권한 </label>
-                            <input type="text" disabled class="form-control" name="userAuth" value="관리자 혹은 사용자" />
-                        </div>
-
-                    </form>
+                <!-- 유저 이메일 -->
+                <div class="form-group">
+                    <label class="control-label" for="userEmail"> 이메일</label>
+                    <input type="email" class="form-control" name="userEmail" ng-model="$ctrl.user.email"/>
                 </div>
 
-                <div class="modal-footer">
-                    <button id="btnAgregar" name="btnAgregar" class="btn btn-primary">관리자로 변경</button>
-                    <button id="btnAgregar" name="btnAgregar" class="btn btn-success">사용자로 변경</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
-
+                <!-- 유저 비밀번호 -->
+                <div class="form-group">
+                  <label class="control-label" for="userPassword"> 비밀번호 </label>
+                  <input type="password" class="form-control" name="userPassword" ng-model="$ctrl.newPassword"/>
                 </div>
-            </div>
+
+                <!-- 권한 -->
+                <div class="form-group">
+                    <label class="control-label" for="userAuth"> 권한 </label>
+                    <input type="text" disabled class="form-control" name="userAuth" value="관리자" ng-if="$ctrl.user.role == 'admin'"/>
+                    <input type="text" disabled class="form-control" name="userAuth" value="사용자" ng-if="$ctrl.user.role == 'user'"/>
+                </div>
+
+            </form>
+        </div>
+
+        <div class="modal-footer">
+            <button id="btnAgregar" name="btnAgregar" class="btn btn-primary" ng-click="$ctrl.change($event)">수정</button>
+            <button id="btnAgregar" name="btnAgregar" class="btn btn-success" ng-click="$ctrl.changeStatus($event, 'admin')" ng-if="$ctrl.user.role == 'user'">관리자로 변경</button>
+            <button id="btnAgregar" name="btnAgregar" class="btn btn-success" ng-click="$ctrl.changeStatus($event, 'user')" ng-if="$ctrl.user.role == 'admin'">사용자로 변경</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="$ctrl.cancel()">취소</button>
 
         </div>
+
     </div>
+
+
 </div>

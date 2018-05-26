@@ -102,6 +102,29 @@ export async function changePassword(req, res) {
   }
 }
 
+export async function change(req, res) {
+  const userId = req.params.id;
+
+  const user = await User.find({
+    where: {
+      id: userId
+    }
+  })
+
+  if (user) {
+    user.email = req.body.email ? req.body.email : user.email
+    user.name = req.body.name ? req.body.name : user.name
+    user.role = req.body.role ? req.body.role : user.role
+    user.password = req.body.password ? req.body.password : user.password
+
+    await user.save()
+
+    res.status(204).end()
+  } else {
+    res.statsu(404).end()
+  }
+}
+
 /**
  * Get my info
  */

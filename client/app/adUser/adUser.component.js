@@ -2,14 +2,16 @@ import uiRouter from 'angular-ui-router'
 import routing from './adUser.routes'
 import template from './adUser.html'
 
-import adUserInsert from './adUserInsert/adUserInsert.component'
-import adUserUpdate from './adUserUpdate/adUserUpdate.component'
+import { AdminUserInsertController } from './adUserInsert/adUserInsert.component'
+import { AdminUserUpdateController } from './adUserUpdate/adUserUpdate.component'
 
+import adUserInsertPage from './adUserInsert/adUserInsert.html'
 import adUserUpdatePage from './adUserUpdate/adUserUpdate.html'
 
 export class AdminUserController {
   /*@ngInject*/
-  constructor($http, $resource, $uibModal, UserService, AlertService, AuthService) {
+  constructor($state, $uibModal, UserService, AlertService, AuthService) {
+    this.$state = $state
     this.$uibModal = $uibModal
     this.UserService = UserService
     this.AlertService = AlertService
@@ -26,15 +28,12 @@ export class AdminUserController {
         }
         return user
       })
-      console.log(this.users)
     }).catch(err => {
       this.AlertService.alert('Error', err.data)
     })
   }
 
   async delUser($event, userId) {
-    console.log(userId)
-
     const currentUser = await this.AuthService.getCurrentUser()
 
     if (currentUser.id === userId) {
@@ -54,9 +53,48 @@ export class AdminUserController {
     })
   }
 
+  openUserUpdateModal(updateUser) {
+    this.$uibModal.open({
+      template: adUserUpdatePage,
+      size: 'md',
+      controller: AdminUserUpdateController,
+      controllerAs: '$ctrl',
+      resolve: {
+        user: () => updateUser
+      }
+    }).result
+      .then(updatedUser => {
+        this.users = this.users.map(user => {
+          if (user.id === updatedUser.id) {
+            if (updatedUser.role === 'user') {
+              updatedUser.roleKr = '사용자'
+            } else {
+              updatedUser.roleKr = '관리자'
+            }
+
+            return updatedUser
+          } else {
+            return user
+          }
+        })
+      }).catch(() => { })
+  }
+
+  openUserInsertModal() {
+    this.$uibModal.open({
+      template: adUserInsertPage,
+      size: 'md',
+      controller: AdminUserInsertController,
+      controllerAs: '$ctrl',
+    }).result
+      .then(() => {
+        this.AlertService.alert('Success', '회원을 추가하였습니다.')
+        this.$state.reload()
+      }).catch(() => { })
+  }
 }
 
-export default angular.module('deliciousMababApp.adUser', [uiRouter, adUserInsert, adUserUpdate])
+export default angular.module('deliciousMababApp.adUser', [uiRouter])
   .config(routing)
   .component('adUser', {
     template,
