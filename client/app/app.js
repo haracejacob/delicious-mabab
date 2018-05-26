@@ -10,19 +10,19 @@ import uiRouter from 'angular-ui-router'
 // import uiBootstrap from 'angular-ui-bootstrap'
 // import 'angular-validation-match';
 
-import {
-  routeConfig
-} from './app.config'
+import routing from './app.routes'
 
 // User side page
 import account from './account/account.component';
 import main from './main/main.component'
 import reservation from './reservation/reservation.component'
+import menu from './menu/menu.component'
 
 // Admin side page
 import adUser from './adUser/adUser.component'
 import adMain from './adMain/adMain.component'
 import adReservation from './adReservation/adReservation.component'
+import adMenu from './adMenu/adMenu.component'
 
 // Component
 import navbar from '../components/navbar/navbar.component'
@@ -64,15 +64,15 @@ angular.module('deliciousMababApp', [
   // modules
   uiRouter, ngResource, ngCookies,
   // user side pages
-  main, account, reservation,
+  main, account, reservation, menu,
   // admin side pages
-  adUser, adMain, adReservation,
+  adUser, adMain, adReservation, adMenu,
   // components
   navbar, footer, adNavbar,
   // services
   services,
 ])
-  .config(routeConfig)
+  .config(routing)
   .run(() => {
     'ngInject';
   });

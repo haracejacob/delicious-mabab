@@ -1,4 +1,4 @@
-export function routeConfig($urlRouterProvider, $locationProvider) {
+export default ($urlRouterProvider, $locationProvider) => {
   'ngInject';
 
   $urlRouterProvider.otherwise('/');

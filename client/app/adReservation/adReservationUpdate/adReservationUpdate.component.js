@@ -14,7 +14,7 @@ export class AdminReservationUpdateController {
   }
 }
 
-export default angular.module('deliciousMababApp.adReservationUpdateController', [uiRouter])
+export default angular.module('deliciousMababApp.adReservationUpdate', [uiRouter])
   .config(routing)
   .component('adReservationUpdate', {
     template,
