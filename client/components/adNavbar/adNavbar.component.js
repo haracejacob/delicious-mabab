@@ -1,4 +1,4 @@
-import template from './navbar.html'
+import template from './adNavbar.html'
 
 export class NavbarComponent {
   constructor() {
@@ -8,8 +8,8 @@ export class NavbarComponent {
 
 }
 
-export default angular.module('directives.navbar', [])
-  .component('navbar', {
+export default angular.module('directives.adNavbar', [])
+  .component('adNavbar', {
     template,
     controller: NavbarComponent
   })

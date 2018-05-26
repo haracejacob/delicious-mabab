@@ -14,11 +14,20 @@ import {
   routeConfig
 } from './app.config'
 
-import account from './account';
-// import admin from './admin';
+// User side page
+import account from './account/account.component';
+import main from './main/main.component'
+import reservation from './reservation/reservation.component'
+
+// Admin side page
+import adUser from './adUser/adUser.component'
+import adMain from './adMain/adMain.component'
+import adReservation from './adReservation/adReservation.component'
+
+// Component
 import navbar from '../components/navbar/navbar.component'
 import footer from '../components/footer/footer.component'
-import main from './main/main.component'
+import adNavbar from '../components/adNavbar/adNavbar.component'
 
 // Service
 import services from '../components/services'
@@ -54,17 +63,19 @@ import './app.css'
 angular.module('deliciousMababApp', [
   // modules
   uiRouter, ngResource, ngCookies,
-  // pages
-  main, account,
+  // user side pages
+  main, account, reservation,
+  // admin side pages
+  adUser, adMain, adReservation,
   // components
-  navbar, footer,
+  navbar, footer, adNavbar,
   // services
   services,
 ])
-.config(routeConfig)
-.run(() => {
-  'ngInject';
-});
+  .config(routeConfig)
+  .run(() => {
+    'ngInject';
+  });
 
 angular.element(document)
   .ready(() => {

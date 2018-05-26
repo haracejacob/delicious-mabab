@@ -1,6 +1,7 @@
-'use strict';
+import routing from './signup.routes'
+import template from './signup.html'
 
-export default class SignupComponent {
+export class SignupComponent {
   /*@ngInject*/
   constructor($state, AuthService) {
     this.$state = $state
@@ -9,6 +10,14 @@ export default class SignupComponent {
     this.email = 'test@test.com'
     this.password = 'password'
     this.submitted = false
+
+    this.AuthService.isLoggedIn().then(res => {
+      if (res) {
+        console.log(res)
+        alert('이미 로그인')
+        this.$state.go('main')
+      }
+    })
   }
 
   register(form) {
@@ -35,3 +44,12 @@ export default class SignupComponent {
     }
   }
 }
+
+export default angular.module('deliciousMababApp.signup', [])
+  .config(routing)
+  .component('signup', {
+    template,
+    controller: SignupComponent,
+    controllerAs: '$ctrl'
+  })
+  .name;

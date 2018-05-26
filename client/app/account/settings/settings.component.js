@@ -1,6 +1,7 @@
-'use strict';
+import routing from './settings.routes'
+import template from './settings.html'
 
-export default class SettingsComponent {
+export class SettingsComponent {
   user = {
     oldPassword: '',
     newPassword: '',
@@ -21,7 +22,7 @@ export default class SettingsComponent {
   changePassword(form) {
     this.submitted = true;
 
-    if(form.$valid) {
+    if (form.$valid) {
       this.Auth.changePassword(this.user.oldPassword, this.user.newPassword)
         .then(() => {
           this.message = 'Password successfully changed.';
@@ -34,3 +35,12 @@ export default class SettingsComponent {
     }
   }
 }
+
+export default angular.module('deliciousMababApp.settings', [])
+  .config(routing)
+  .component('settings', {
+    template,
+    controller: SettingsComponent,
+    controllerAs: '$ctrl',
+  })
+  .name;

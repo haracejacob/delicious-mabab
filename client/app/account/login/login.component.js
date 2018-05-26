@@ -1,6 +1,7 @@
-'use strict';
+import routing from './login.routes'
+import template from './login.html'
 
-export default class LoginComponent {
+export class LoginComponent {
   errors = {
     login: undefined
   };
@@ -35,3 +36,13 @@ export default class LoginComponent {
     }
   }
 }
+
+
+export default angular.module('deliciousMababApp.login', [])
+  .config(routing)
+  .component('login', {
+    template,
+    controller: LoginComponent,
+    controllerAs: '$ctrl',
+  })
+  .name
