@@ -1,3 +1,47 @@
 <div class="container">
-  ad User Update page 입니다
+    <!-- modal(유저 상세보기)-->
+    <div id="myEditModal" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-md">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title">유저 정보</h4>
+                </div>
+
+
+                <div class="modal-body">
+                    <form>
+                        <!-- 유저 이름 -->
+                        <div class="form-group">
+                            <label class="control-label" for="userName"> 이름</label>
+                            <input type="text" class="form-control" name="userName" />
+                        </div>
+
+                        <!-- 유저 이메일 -->
+                        <div class="form-group">
+                            <label class="control-label" for="userEmail"> 이메일</label>
+                            <input type="text" class="form-control" name="userEmail" />
+                        </div>
+
+                        <!-- 권한 -->
+                        <div class="form-group">
+                            <label class="control-label" for="userAuth"> 권한 </label>
+                            <input type="text" disabled class="form-control" name="userAuth" value="관리자 혹은 사용자" />
+                        </div>
+
+                    </form>
+                </div>
+
+                <div class="modal-footer">
+                    <button id="btnAgregar" name="btnAgregar" class="btn btn-primary">관리자로 변경</button>
+                    <button id="btnAgregar" name="btnAgregar" class="btn btn-success">사용자로 변경</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
 </div>
