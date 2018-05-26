@@ -21,12 +21,11 @@ export default function AuthService($location, $cookies, $q, UserService) {
       password,
     }) {
       return new Promise(async resolve => {
-        const token = await UserService.login({
+        const res = await UserService.login({
           email,
           password
         }).$promise
-
-        $cookies.put('token', token)
+        $cookies.put('token', res.token)
 
         const user = await UserService.me().$promise;
 

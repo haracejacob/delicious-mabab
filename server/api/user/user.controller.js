@@ -111,6 +111,8 @@ export async function me(req, res) {
   if (!user) {
     return res.status(401).end();
   }
+  console.log(123213213213)
+  console.log(user)
   res.json(user);
 }
 

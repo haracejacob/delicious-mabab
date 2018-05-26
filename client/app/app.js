@@ -2,13 +2,13 @@
 
 import angular from 'angular'
 // import ngAnimate from 'angular-animate';
-import ngCookies from 'angular-cookies';
-import ngResource from 'angular-resource';
+import ngCookies from 'angular-cookies'
+import ngResource from 'angular-resource'
 // import ngSanitize from 'angular-sanitize';
 
 import uiRouter from 'angular-ui-router'
 // import uiBootstrap from 'angular-ui-bootstrap'
-// import 'angular-validation-match';
+import 'angular-validation-match'
 
 import routing from './app.routes'
 

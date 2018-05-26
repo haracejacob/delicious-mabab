@@ -2,12 +2,6 @@ import routing from './login.routes'
 import template from './login.html'
 
 export class LoginComponent {
-  errors = {
-    login: undefined
-  };
-  submitted = false;
-
-
   /*@ngInject*/
   constructor($state, AuthService) {
     this.$state = $state
@@ -16,15 +10,22 @@ export class LoginComponent {
     this.name = 'test'
     this.email = 'test@test.com'
     this.password = 'password'
+    this.submitted = false
+
+    // login validation
+    this.AuthService.isLoggedIn().then(res => {
+      if (res) {
+        this.$state.go('main')
+      }
+    })
   }
 
   login(form) {
     this.submitted = true;
-
-    if(form.$valid) {
-      this.Auth.login({
-        email: this.user.email,
-        password: this.user.password
+    if (form.$valid) {
+      this.AuthService.login({
+        email: this.email,
+        password: this.password
       })
         .then(() => {
           // Logged in, redirect to home

@@ -1,8 +1,7 @@
-'use strict';
-require('express-async-errors');
-import { Router } from 'express';
-import passport from 'passport';
-import { signToken } from '../auth.service';
+import 'express-async-errors'
+import { Router } from 'express'
+import passport from 'passport'
+import { signToken } from '../auth.service'
 
 const router = Router();
 
