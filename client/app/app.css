@@ -1,6 +1,16 @@
 @import '~bootstrap/dist/css/bootstrap.css';
 @import '~angular-material/angular-material.min.css';
 
+body{
+	padding:0px;
+}
+.btn-login{
+	outline:none!important;
+}
+.btn-register{
+	outline:none!important;
+}
+
 /*menu.html*/
 .career{
 	transition-duration:.6s;
@@ -31,6 +41,7 @@
 	height:20px;
 	border-radius:100%;
 	padding:0px;
+	outline:none!important;
 }
 menu{
 	padding:0px;
