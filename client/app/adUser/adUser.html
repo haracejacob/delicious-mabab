@@ -4,7 +4,7 @@
         <h3>사용자 명단</h3>
         <!--tab-->
         <table class="table table-striped">
-            <a href="#" class="btn btn-primary btn-xs pull-right" data-toggle="modal" data-target="#myRegisterModal">
+            <a ng-click="$ctrl.openModal2()" href="#" class="btn btn-primary btn-xs pull-right" data-toggle="modal" data-target="#myRegisterModal">
                 <b>+</b> 새 계정 추가</a>
             <thead>
                 <tr>
@@ -22,7 +22,7 @@
                     <td>root@midasit.co.kr</td>
                     <td>관리자</td>
                     <td>
-                        <a class='btn btn-info btn-xs' href="#" data-toggle="modal" data-target="#myEditModal">
+                        <a ng-click="$ctrl.openModal()" class='btn btn-info btn-xs' href="#" data-toggle="modal" data-target="#myEditModal">
                             <span class="glyphicon glyphicon-edit"></span>편집</a>
                         <a href="#" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myDeleteModal">
                             <span class="glyphicon glyphicon-remove"></span>삭제</a>
@@ -46,7 +46,7 @@
                     <td>ggg@midasit.co.kr</td>
                     <td>사용자</td>
                     <td>
-                        <a class='btn btn-info btn-xs' href="#" data-toggle="modal" data-target="#myEditModal">
+                        <a ng-click="$ctrl.openModal()" class='btn btn-info btn-xs' href="#" data-toggle="modal" data-target="#myEditModal">
                             <span class="glyphicon glyphicon-edit"></span>편집</a>
                         <a href="#" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myDeleteModal">
                             <span class="glyphicon glyphicon-remove"></span>삭제</a>
