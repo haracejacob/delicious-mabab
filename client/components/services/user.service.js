@@ -2,7 +2,7 @@ export default function UserService($resource) {
   'ngInject'
 
   const UserResource = $resource('/api/user/:id', {
-    _id: '@id',
+    id: '@id',
     name: '@name',
     email: '@email',
     role: '@role',

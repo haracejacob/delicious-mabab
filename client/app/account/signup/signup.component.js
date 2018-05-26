@@ -11,10 +11,9 @@ export class SignupComponent {
     this.password = 'password'
     this.submitted = false
 
+    // login validation
     this.AuthService.isLoggedIn().then(res => {
       if (res) {
-        console.log(res)
-        alert('이미 로그인')
         this.$state.go('main')
       }
     })
@@ -34,12 +33,11 @@ export class SignupComponent {
         email: this.email,
         password: this.password
       }).then(res => {
-        console.log(res)
-        alert('success')
+        alert('회원가입을 축하합니다! 메인화면으로 이동합니다.')
         this.$state.go('main')
       }).catch(err => {
         console.log(err)
-        alert('err')
+        alert('에러가 발생했습니다. 관리자에게 문의해 주십시오')
       })
     }
   }

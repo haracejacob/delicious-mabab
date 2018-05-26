@@ -2,13 +2,13 @@
 
 import angular from 'angular'
 // import ngAnimate from 'angular-animate';
-import ngCookies from 'angular-cookies';
-import ngResource from 'angular-resource';
+import ngCookies from 'angular-cookies'
+import ngResource from 'angular-resource'
 // import ngSanitize from 'angular-sanitize';
 
 import uiRouter from 'angular-ui-router'
-// import uiBootstrap from 'angular-ui-bootstrap'
-// import 'angular-validation-match';
+import uiBootstrap from 'angular-ui-bootstrap'
+import 'angular-validation-match'
 
 import routing from './app.routes'
 
@@ -28,6 +28,7 @@ import adMenu from './adMenu/adMenu.component'
 import navbar from '../components/navbar/navbar.component'
 import footer from '../components/footer/footer.component'
 import adNavbar from '../components/adNavbar/adNavbar.component'
+import adSidebar from '../components/adSidebar/adSidebar.component'
 
 // Service
 import services from '../components/services'
@@ -62,20 +63,32 @@ import './app.css'
 
 angular.module('deliciousMababApp', [
   // modules
-  uiRouter, ngResource, ngCookies,
+  uiRouter, ngResource, ngCookies, uiBootstrap,
   // user side pages
   main, account, reservation, menu,
   // admin side pages
   adUser, adMain, adReservation, adMenu,
   // components
-  navbar, footer, adNavbar,
+  navbar, footer, adNavbar, adSidebar,
   // services
   services,
 ])
   .config(routing)
-  .run(() => {
-    'ngInject';
-  });
+  .run(($rootScope, $location, $state, $transitions) => {
+    'ngInject'
+
+    $transitions.onSuccess({}, function(transition) {
+      const current = transition.to().name
+
+      if (['login', 'signup'].includes(current)) {
+        $rootScope.status = 'login'
+      } else if (current.startsWith('ad')) {
+        $rootScope.status = 'admin'
+      } else {
+        $rootScope.status = 'logined'
+      }
+    })
+  })
 
 angular.element(document)
   .ready(() => {

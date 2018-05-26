@@ -4,12 +4,6 @@ const validatePresenceOf = value => (value && value.length)
 
 export default (sequelize, DataTypes) => {
   const User = sequelize.define('user', {
-    _id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      primaryKey: true,
-      autoIncrement: true
-    },
     name: DataTypes.STRING,
     email: {
       type: DataTypes.STRING,
@@ -55,7 +49,7 @@ export default (sequelize, DataTypes) => {
       // Non-sensitive info we'll be putting in the token
       token() {
         return {
-          _id: this._id,
+          id: this.id,
           role: this.role
         };
       }
@@ -63,28 +57,28 @@ export default (sequelize, DataTypes) => {
 
     hooks: {
       beforeBulkCreate(users, fields, fn) {
-        var totalUpdated = 0;
+        let totalUpdated = 0;
         users.forEach(user => {
           user.updatePassword()
-          .then(() => {
-            totalUpdated += 1;
-            if (totalUpdated === users.length) {
-              return fn();
-            }
-          })
-          .catch(err => fn(err))
+            .then(() => {
+              totalUpdated += 1;
+              if (totalUpdated === users.length) {
+                return fn();
+              }
+            })
+            .catch(err => fn(err))
         });
       },
       beforeCreate(user, fields, fn) {
         user.updatePassword()
-        .then(() => fn())
-        .catch(err => fn(err))
+          .then(() => fn())
+          .catch(err => fn(err))
       },
       beforeUpdate(user, fields, fn) {
         if (user.changed('password')) {
           user.updatePassword()
-          .then(() => fn())
-          .catch(err => fn(err))
+            .then(() => fn())
+            .catch(err => fn(err))
         }
         fn();
       }

@@ -1,8 +1,7 @@
-'use strict';
-require('express-async-errors');
-import { Router } from 'express';
-import passport from 'passport';
-import { signToken } from '../auth.service';
+import 'express-async-errors'
+import { Router } from 'express'
+import passport from 'passport'
+import { signToken } from '../auth.service'
 
 const router = Router();
 
@@ -16,7 +15,7 @@ router.post('/', function(req, res, next) {
       return res.status(404).json({message: '비밀번호 또는 아이디가 틀렸습니다. 다시 입력 해주십시오'});
     }
 
-    const token = signToken(user._id, user.role);
+    const token = signToken(user.id, user.role);
     res.json({ token });
   })(req, res, next);
 });

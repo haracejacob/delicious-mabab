@@ -4,16 +4,11 @@ import template from './main.html'
 
 export class MainController {
   /*@ngInject*/
-  constructor($http, $resource, AuthService) {
-    this.$http = $http
-    this.$resource = $resource
+  constructor(AuthService) {
     this.AuthService = AuthService
   }
 
   async $onInit() {
-    console.log(await this.AuthService.getCurrentUser())
-    console.log(await this.AuthService.isLoggedIn())
-    console.log(this.AuthService.getToken())
   }
 }
 
