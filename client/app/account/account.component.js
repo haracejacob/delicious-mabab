@@ -1,13 +1,9 @@
-'use strict';
-
-import angular from 'angular';
-
 import uiRouter from 'angular-ui-router';
 
 import routing from './account.routes';
-import login from './login';
-import settings from './settings';
-import signup from './signup';
+import login from './login/login.component';
+import settings from './settings/settings.component';
+import signup from './signup/signup.component';
 
 export default angular.module('deliciousMababApp.account', [uiRouter, login, settings, signup])
   .config(routing)
