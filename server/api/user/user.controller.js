@@ -15,7 +15,6 @@ export async function index(req, res) {
       'name',
       'email',
       'role',
-      'provider'
     ]
   });
 

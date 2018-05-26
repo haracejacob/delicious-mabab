@@ -1,162 +1,134 @@
 <div class="container">
+  <div class="col-md-9">
+    <h3>사용자 명단</h3>
+    <!--tab-->
+    <table class="table table-striped">
+      <a href="#" class="btn btn-primary btn-xs pull-right" data-toggle="modal" data-target="#myRegisterModal">
+        <b>+</b> 새 계정 추가</a>
+      <thead>
+        <tr>
+          <th>NO.</th>
+          <th>이름</th>
+          <th>이메일</th>
+          <th>권한</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="user in $ctrl.users track by $index">
+          <td>{{$index+1}}</td>
+          <td>{{user.name}}</td>
+          <td>{{user.email}}</td>
+          <td>{{user.roleKr}}</td>
+          <td>
+            <a class='btn btn-info btn-xs' href="#" ng-click="$ctrl.openModal()">
+              <span class="glyphicon glyphicon-edit"></span>편집</a>
+            <a href="#" class="btn btn-danger btn-xs" ng-click="$ctrl.delUser($event, user.id)">
+              <span class="glyphicon glyphicon-remove"></span>삭제</a>
+          </td>
+        </tr>
+      </tbody>
+  </table>
+  <div class="col-md-12 right">
+      <form>
+          <div class="col-md-2"></div>
+          <div class="col-md-2"></div>
+          <div class="col-md-8 pull-right">
+              <div class="col-md-3" style="padding:0px;">
+                  <select class="form-control">
+                      <option>이름</option>
+                      <option>이메일</option>
+                  </select>
+              </div>
+              <div class="col-md-6" style="padding:0px;">
+                  <input type="text" class="form-control">
+              </div>
+              <div class="col-md-2" style="padding:0px;">
+                  <input type="button" class="btn btn-default btn-md" value="검색">
+              </div>
+          </div>
+      </form>
+  </div>
+</div>
 
-    <div class="col-md-9">
-        <h3>사용자 명단</h3>
-        <!--tab-->
-        <table class="table table-striped">
-            <a href="#" class="btn btn-primary btn-xs pull-right" data-toggle="modal" data-target="#myRegisterModal">
-                <b>+</b> 새 계정 추가</a>
-            <thead>
-                <tr>
-                    <th>NO.</th>
-                    <th>이름</th>
-                    <th>이메일</th>
-                    <th>권한</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1.</td>
-                    <td>관리자 1</td>
-                    <td>root@midasit.co.kr</td>
-                    <td>관리자</td>
-                    <td>
-                        <a class='btn btn-info btn-xs' href="#" data-toggle="modal" data-target="#myEditModal">
-                            <span class="glyphicon glyphicon-edit"></span>편집</a>
-                        <a href="#" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myDeleteModal">
-                            <span class="glyphicon glyphicon-remove"></span>삭제</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>2.</td>
-                    <td>사용자 1</td>
-                    <td>abcs12s@midasit.co.kr</td>
-                    <td>사용자</td>
-                    <td>
-                        <a ng-click="$ctrl.openModal()" class='btn btn-info btn-xs' href="#" data-toggle="modal" data-target="#myEditModal">
-                            <span class="glyphicon glyphicon-edit"></span>편집</a>
-                        <a href="#" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myDeleteModal">
-                            <span class="glyphicon glyphicon-remove"></span>삭제</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>1.</td>
-                    <td>사용자 2</td>
-                    <td>ggg@midasit.co.kr</td>
-                    <td>사용자</td>
-                    <td>
-                        <a class='btn btn-info btn-xs' href="#" data-toggle="modal" data-target="#myEditModal">
-                            <span class="glyphicon glyphicon-edit"></span>편집</a>
-                        <a href="#" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myDeleteModal">
-                            <span class="glyphicon glyphicon-remove"></span>삭제</a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <div class="col-md-12 right">
-            <form>
-                <div class="col-md-2"></div>
-                <div class="col-md-2"></div>
-                <div class="col-md-8 pull-right">
-                    <div class="col-md-3" style="padding:0px;">
+
+
+<div id="myDeleteModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+          <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">×</button>
+              <h4 class="modal-title">상품 삭제</h4>
+          </div>
+
+          <div class="modal-body">
+              <form>
+                  <!-- 종류 -->
+                  <div class="form-group">
+                      <label class="control-label">정말 삭제하시겠습니까?</label>
+                  </div>
+
+              </form>
+          </div>
+
+
+          <div class="modal-footer">
+              <button type="button" class="btn btn-default" ng-click="1()" data-dismiss="modal">취소</button>
+              <button id="btnAgregar" name="btnAgregar" class="btn btn-danger">삭제</button>
+          </div>
+      </div>
+    </div>
+</div>
+
+
+<!-- modal(유저 상세보기)-->
+<div id="myRegisterModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-md">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+                <h4 class="modal-title">유저 추가</h4>
+            </div>
+
+
+            <div class="modal-body">
+                <form>
+                    <!-- 유저 이름 -->
+                    <div class="form-group">
+                        <label class="control-label" for="userName"> 이름</label>
+                        <input type="text" class="form-control" name="userName" />
+                    </div>
+
+                    <!-- 유저 이메일 -->
+                    <div class="form-group">
+                        <label class="control-label" for="userEmail"> 이메일</label>
+                        <input type="text" class="form-control" name="userEmail" />
+                    </div>
+
+                    <!-- 권한 -->
+                    <div class="form-group">
+                        <label class="control-label" for="userAuth"> 권한 </label>
                         <select class="form-control">
-                            <option>이름</option>
-                            <option>이메일</option>
+                            <option>관리자</option>
+                            <option>사용자</option>
                         </select>
                     </div>
-                    <div class="col-md-6" style="padding:0px;">
-                        <input type="text" class="form-control">
-                    </div>
-                    <div class="col-md-2" style="padding:0px;">
-                        <input type="button" class="btn btn-default btn-md" value="검색">
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
 
-
-
-    <div id="myDeleteModal" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">×</button>
-                    <h4 class="modal-title">상품 삭제</h4>
-                </div>
-
-                <div class="modal-body">
-                    <form>
-                        <!-- 종류 -->
-                        <div class="form-group">
-                            <label class="control-label">정말 삭제하시겠습니까?</label>
-                        </div>
-
-                    </form>
-                </div>
-
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" ng-click="1()" data-dismiss="modal">취소</button>
-                    <button id="btnAgregar" name="btnAgregar" class="btn btn-danger">삭제</button>
-                </div>
+                </form>
             </div>
 
-        </div>
-    </div>
 
+            <div class="modal-footer">
+                <button id="btnAgregar" name="btnAgregar" class="btn btn-primary">등록</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
 
-    <!-- modal(유저 상세보기)-->
-    <div id="myRegisterModal" class="modal fade" role="dialog">
-        <div class="modal-dialog modal-md">
-
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">×</button>
-                    <h4 class="modal-title">유저 추가</h4>
-                </div>
-
-
-                <div class="modal-body">
-                    <form>
-                        <!-- 유저 이름 -->
-                        <div class="form-group">
-                            <label class="control-label" for="userName"> 이름</label>
-                            <input type="text" class="form-control" name="userName" />
-                        </div>
-
-                        <!-- 유저 이메일 -->
-                        <div class="form-group">
-                            <label class="control-label" for="userEmail"> 이메일</label>
-                            <input type="text" class="form-control" name="userEmail" />
-                        </div>
-
-                        <!-- 권한 -->
-                        <div class="form-group">
-                            <label class="control-label" for="userAuth"> 권한 </label>
-                            <select class="form-control">
-                                <option>관리자</option>
-                                <option>사용자</option>                                
-                            </select>
-                        </div>
-
-                    </form>
-                </div>
-
-
-                <div class="modal-footer">
-                    <button id="btnAgregar" name="btnAgregar" class="btn btn-primary">등록</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
-
-                </div>
             </div>
-
         </div>
+
     </div>
-
-
+  </div>
 </div>

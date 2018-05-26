@@ -18,19 +18,19 @@
     </div>
     <div ng-if="$root.status=='logined'">
       <navbar ></navbar>
-        <div ui-view=""></div>
+      <div ui-view=""></div>
       <footer></footer>
     </div>
     <div ng-if="$root.status=='admin'">
-        <ad-navbar ></ad-navbar>
-        <div class="col-md-4">
-          <ad-sidebar></ad-sidebar>
-        </div>
-        <div class="col-md-8">
-          <div ui-view=""></div>
-        </div>
-        <footer></footer>
+      <ad-navbar ></ad-navbar>
+      <div class="col-md-4">
+        <ad-sidebar></ad-sidebar>
       </div>
+      <div class="col-md-8">
+        <div ui-view=""></div>
+      </div>
+      <footer></footer>
+    </div>
 
 <script type="text/javascript" src="vendor.bundle.js"></script>
 <script type="text/javascript" src="polyfills.bundle.js"></script>
