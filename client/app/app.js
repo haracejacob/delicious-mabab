@@ -2,24 +2,35 @@
 
 import angular from 'angular'
 // import ngAnimate from 'angular-animate';
-// import ngCookies from 'angular-cookies';
-// import ngResource from 'angular-resource';
+import ngCookies from 'angular-cookies';
+import ngResource from 'angular-resource';
 // import ngSanitize from 'angular-sanitize';
 
 import uiRouter from 'angular-ui-router'
 // import uiBootstrap from 'angular-ui-bootstrap'
 // import 'angular-validation-match';
 
-import {
-  routeConfig
-} from './app.config'
+import routing from './app.routes'
 
-// import _Auth from '../components/auth/auth.module';
-// import account from './account';
-// import admin from './admin';
+// User side page
+import account from './account/account.component';
+import main from './main/main.component'
+import reservation from './reservation/reservation.component'
+import menu from './menu/menu.component'
+
+// Admin side page
+import adUser from './adUser/adUser.component'
+import adMain from './adMain/adMain.component'
+import adReservation from './adReservation/adReservation.component'
+import adMenu from './adMenu/adMenu.component'
+
+// Component
 import navbar from '../components/navbar/navbar.component'
 import footer from '../components/footer/footer.component'
-import main from './main/main.component'
+import adNavbar from '../components/adNavbar/adNavbar.component'
+
+// Service
+import services from '../components/services'
 // import constants from './app.constants';
 // import util from '../components/util/util.module';
 
@@ -50,14 +61,21 @@ import './app.css'
 //   });
 
 angular.module('deliciousMababApp', [
-  uiRouter,
-  main,
-  navbar, footer
+  // modules
+  uiRouter, ngResource, ngCookies,
+  // user side pages
+  main, account, reservation, menu,
+  // admin side pages
+  adUser, adMain, adReservation, adMenu,
+  // components
+  navbar, footer, adNavbar,
+  // services
+  services,
 ])
-.config(routeConfig)
-.run(() => {
-  'ngInject';
-});
+  .config(routing)
+  .run(() => {
+    'ngInject';
+  });
 
 angular.element(document)
   .ready(() => {
