@@ -1,6 +1,9 @@
+import path from 'path'
+
 // Development specific configuration
 // ==================================
 export default {
+  uploadPath: path.join(__dirname, '../../.tmp'),
   // Sequelize connection opions
   sequelize: {
     database: 'dev_mabab',
@@ -11,7 +14,7 @@ export default {
       dialect: 'mysql',
       define: {
         insecureAuth: true,
-        timestamps: false,
+        timestamps: true,
         charset: 'utf8',
         collate: 'utf8_general_ci'
       }

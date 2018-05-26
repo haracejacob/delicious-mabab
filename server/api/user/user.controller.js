@@ -11,7 +11,7 @@ import jwt from 'jsonwebtoken';
 export async function index(req, res) {
   const users = await User.findAll({
     attributes: [
-      '_id',
+      'id',
       'name',
       'email',
       'role',
@@ -31,7 +31,7 @@ export async function create(req, res) {
 
   const user = await newUser.save()
 
-  const token = jwt.sign({ _id: user._id }, config.secrets.session, {
+  const token = jwt.sign({ id: user.id }, config.secrets.session, {
     expiresIn: 60 * 60 * 5
   });
 
@@ -46,7 +46,7 @@ export async function show(req, res) {
 
   const user = await User.find({
     where: {
-      _id: userId
+      id: userId
     }
   })
 
@@ -61,7 +61,7 @@ export async function show(req, res) {
  * restriction: 'admin'
  */
 export async function destroy(req, res) {
-  await User.destroy({ where: { _id: req.params.id } })
+  await User.destroy({ where: { id: req.params.id } })
 
   res.status(204).end();
 }
@@ -70,13 +70,13 @@ export async function destroy(req, res) {
  * Change a users password
  */
 export async function changePassword(req, res) {
-  const userId = req.user._id;
+  const userId = req.user.id;
   const oldPass = String(req.body.oldPassword);
   const newPass = String(req.body.newPassword);
 
   const user = await User.find({
     where: {
-      _id: userId
+      id: userId
     }
   })
 
@@ -95,14 +95,14 @@ export async function changePassword(req, res) {
  * Get my info
  */
 export async function me(req, res) {
-  const userId = req.user._id;
+  const userId = req.user.id
 
   const user = await User.find({
     where: {
-      _id: userId
+      id: userId
     },
     attributes: [
-      '_id',
+      'id',
       'name',
       'email',
       'role'
@@ -111,6 +111,8 @@ export async function me(req, res) {
   if (!user) {
     return res.status(401).end();
   }
+  console.log(123213213213)
+  console.log(user)
   res.json(user);
 }
 

@@ -19,21 +19,25 @@ import db from './db'
 const Store = expressSequelizeSession(session.Store);
 
 export default app => {
-  const env = app.get('env');
+  const env = app.get('env')
 
-  app.set('appPath', path.join(config.root, 'client'));
-  app.use(express.static(app.get('appPath')));
-  app.use(logger('dev'));
+  app.set('appPath', path.join(config.root, 'client'))
+  app.use(express.static(app.get('appPath')))
+
+  app.use(logger('dev'))
+
+  //file upload path
+  app.use(express.static(config.uploadPath));
 
   // view engine setup
-  app.set('views', path.join(config.root, 'server', 'views'));
-  app.engine('html', ejs.renderFile);
-  app.set('view engine', 'html');
+  app.set('views', path.join(config.root, 'server', 'views'))
+  app.engine('html', ejs.renderFile)
+  app.set('view engine', 'html')
 
-  app.use(bodyParser.urlencoded({ extended: false }));
-  app.use(bodyParser.json());
-  app.use(cookieParser());
-  app.use(passport.initialize());
+  app.use(bodyParser.urlencoded({ extended: false }))
+  app.use(bodyParser.json())
+  app.use(cookieParser())
+  app.use(passport.initialize())
 
   // Persist sessions with sequelizeStore
   // We need to enable sessions for passport-twitter because it's an

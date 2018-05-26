@@ -23,10 +23,12 @@
     </p>
 
     <label>Confirm Password</label>
-    <input type="password" name="confirmPassword" class="form-control" ng-model="$ctrl.confirmPassword"
-      match="$ctrl.password" ng-minlength="3" required/>
+    <input type="password" name="confirmPassword" class="form-control" ng-model="$ctrl.confirmPassword" match="$ctrl.password" ng-minlength="3" match-caseless="true" required/>
     <p class="help-block" ng-show="form.confirmPassword.$error.required && $ctrl.submitted">
       Confirm password is required
+    </p>
+    <p class="help-block" ng-show="form.confirmPassword.$error.match && $ctrl.submitted">
+      password match
     </p>
 
     <button class="btn btn-default btn-lg btn-register" type="submit">
