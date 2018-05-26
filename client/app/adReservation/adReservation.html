@@ -26,7 +26,7 @@
                     <td>2018-05-26 11:00:00</td>
                     <td>2018-05-26 12:00:00</td>
                     <td>
-                        <a href="#" data-toggle="modal" data-target="#reservationModal">상세보기</a>
+                        <a href="#" data-toggle="modal" ng-click="$ctrl.openModal()" data-target="#reservationModal">상세보기</a>
                     </td>
                 </tr>
                 <tr>
@@ -39,7 +39,7 @@
                     <td>2018-05-26 11:00:00</td>
                     <td>2018-05-26 12:00:00</td>
                     <td>
-                        <a href="#" data-toggle="modal" data-target="#reservationModal">상세보기</a>
+                        <a href="#" data-toggle="modal" ng-click="$ctrl.openModal()" data-target="#reservationModal">상세보기</a>
                     </td>
                 </tr>
                 <tr>
@@ -52,7 +52,7 @@
                     <td>2018-05-26 11:00:00</td>
                     <td>2018-05-26 12:00:00</td>
                     <td>
-                        <a href="#" data-toggle="modal" data-target="#reservationModal">상세보기</a>
+                        <a href="#" data-toggle="modal" ng-click="$ctrl.openModal()" data-target="#reservationModal">상세보기</a>
                     </td>
                 </tr>
             </tbody>
@@ -90,67 +90,4 @@
         </div>
     </div>
 
-
-    <div id="reservationModal" class="modal fade" role="dialog">
-        <div class="modal-dialog modal-lg">
-
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">×</button>
-                    <h4 class="modal-title">예약 정보</h4>
-                </div>
-
-
-                <div class="modal-body">
-                    <form>
-                        <!-- 정보 -->
-                        <div class="form-group">
-                            <label class="control-label" for="productDescription">예약 신청자</label>
-                            <input type="text" disabled value="ㅇㅇㅇ" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label" for="productDescription">예약 신청 날짜</label>
-                            <input type="text" disabled value="2017:11321" class="form-control">
-                        </div>
-
-                        <div class="form-group">
-                            <label class="control-label">에약 품목</label>
-                            <table class="table table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>품목</th>
-                                        <th>수량</th>
-                                        <th>요구사항</th>
-                                        <th>총 가격</th>
-                                    </tr>
-                                    <tr>
-                                        <td>아메리카노</td>
-                                        <td>2EA</td>
-                                        <td>한잔은 진하게 한잔은 연하게</td>
-                                        <td>5000</td>
-
-                                    </tr>
-                                </thead>
-                            </table>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="control-label" for="productDescription">상품 설명</label>
-                            <textarea class="form-control" name="productDescription" />
-                        </div>
-
-                    </form>
-                </div>
-
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-info" data-dismiss="modal">완료 처리</button>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">취소 처리</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
-                </div>
-            </div>
-
-        </div>
-    </div>
 </div>
