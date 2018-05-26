@@ -11,7 +11,7 @@ export default {
       'angular-ui-router',
       'angular-validation-match',
       'angular-cookies',
-
+      'angular-ui-bootstrap',
       'lodash'
     ]
   },

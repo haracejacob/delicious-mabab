@@ -13,10 +13,25 @@
     <!--[if lt IE 9]>
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
+    <div ng-if="$root.status=='login'">
+      <div ui-view=""></div>
+    </div>
+    <div ng-if="$root.status=='logined'">
+      <navbar ></navbar>
+        <div ui-view=""></div>
+      <footer></footer>
+    </div>
+    <div ng-if="$root.status=='admin'">
+        <ad-navbar ></ad-navbar>
+        <div class="col-md-4">
+          <ad-sidebar></ad-sidebar>
+        </div>
+        <div class="col-md-8">
+          <div ui-view=""></div>
+        </div>
+        <footer></footer>
+      </div>
 
-    <navbar></navbar>
-    <div ui-view=""></div>
-    <footer></footer>
 <script type="text/javascript" src="vendor.bundle.js"></script>
 <script type="text/javascript" src="polyfills.bundle.js"></script>
 <script type="text/javascript" src="app.bundle.js"></script>
