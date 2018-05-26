@@ -4,6 +4,7 @@ import angular from 'angular'
 // import ngAnimate from 'angular-animate';
 import ngCookies from 'angular-cookies'
 import ngResource from 'angular-resource'
+import ngMaterial from 'angular-material'
 // import ngSanitize from 'angular-sanitize';
 
 import uiRouter from 'angular-ui-router'
@@ -63,7 +64,7 @@ import './app.css'
 
 angular.module('deliciousMababApp', [
   // modules
-  uiRouter, ngResource, ngCookies, uiBootstrap,
+  uiRouter, ngResource, ngCookies, uiBootstrap, ngMaterial,
   // user side pages
   main, account, reservation, menu,
   // admin side pages
