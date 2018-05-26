@@ -1,7 +1,7 @@
 import _ from 'lodash'
 
 class _User {
-  _id = ''
+  id = ''
   name = ''
   email = ''
   role = ''
@@ -56,7 +56,7 @@ export default function AuthService($location, $cookies, $q, UserService) {
       return new Promise(async (resolve, reject) => {
         try {
           await UserService.changePassword({
-            id: currentUser._id
+            id: currentUser.id
           }, {
             oldPassword,
             newPassword
