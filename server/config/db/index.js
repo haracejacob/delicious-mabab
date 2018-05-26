@@ -33,6 +33,8 @@ Category.hasMany(Menu, {
   onUpdate: 'CASCADE',
 })
 
+Menu.belongsTo(Category)
+
 Reservation.belongsToMany(Menu, {
   through: ReservationMenu,
   foreignKey: 'reservationId',

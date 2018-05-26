@@ -12,6 +12,6 @@ router.get('/category/:categoryId', auth.isAuthenticated(), controller.indexByCa
 router.get('/:id', auth.isAuthenticated(), controller.show)
 router.delete('/:id', auth.hasRole('admin'), controller.destroy)
 router.put('/:id', auth.hasRole('admin'), upload.single('imagefile'), controller.change)
-router.post('/', auth.hasRole('admin'), upload.single('imagefile'), controller.create)
+router.post('/', auth.hasRole('admin'), upload.single('file'), controller.create)
 
 export default router;

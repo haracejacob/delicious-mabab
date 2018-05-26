@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -9,32 +10,33 @@
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 </head>
+
 <body>
     <!--[if lt IE 9]>
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
     <div ng-if="$root.status=='login'">
-      <div ui-view=""></div>
+        <div ui-view=""></div>
     </div>
     <div ng-if="$root.status=='logined'">
-      <navbar ></navbar>
-      <div ui-view=""></div>
-      <footer></footer>
-    </div>
-    <div ng-if="$root.status=='admin'">
-      <ad-navbar ></ad-navbar>
-      <div class="col-md-4">
-        <ad-sidebar></ad-sidebar>
-      </div>
-      <div class="col-md-8">
+        <navbar></navbar>
         <div ui-view=""></div>
-      </div>
-      <footer></footer>
+        <footer></footer>
+    </div>
+    <div style="background-color:#FAFAFA;" ng-if="$root.status=='admin'">
+        <ad-navbar></ad-navbar>
+        <div class="col-md-4" style="background-color:#FAFAFA; padding-bottom:30px;" ;>
+            <ad-sidebar></ad-sidebar>
+        </div>
+        <div class="col-md-8" style="background-color:#FAFAFA; padding-bottom:30px;">
+            <div ui-view=""></div>
+        </div>
+        <footer></footer>
     </div>
 
-<script type="text/javascript" src="vendor.bundle.js"></script>
-<script type="text/javascript" src="polyfills.bundle.js"></script>
-<script type="text/javascript" src="app.bundle.js"></script>
+    <script type="text/javascript" src="vendor.bundle.js"></script>
+    <script type="text/javascript" src="polyfills.bundle.js"></script>
+    <script type="text/javascript" src="app.bundle.js"></script>
 </body>
 
 </html>

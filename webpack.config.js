@@ -15,6 +15,7 @@ export default {
       'angular-material',
       'angular-animate',
       'angular-aria',
+      'angular-file-upload',
       'lodash'
     ]
   },

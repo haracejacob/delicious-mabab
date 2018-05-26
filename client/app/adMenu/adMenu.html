@@ -1,9 +1,9 @@
 <div class="container">
     <div class="col-md-9">
-        <h3>메뉴 목록</h3>
+        <h3 style="font-weight:bold;"><i class="glyphicon glyphicon-cutlery"></i>&nbsp;판매 품목 목록</h3>
         <table class="table table-striped">
             <thead>
-                <a href="#" class="btn btn-primary btn-xs pull-right" data-toggle="modal" data-target="#myModal" ng-click="$ctrl.openModal2()">
+                <a ng-click="$ctrl.openMenuInsertModal()" href="#" class="btn btn-primary btn-xs pull-right">
                     <b>+</b> 새 상품 추가</a>
                 <tr>
                     <th>No.</th>
@@ -13,44 +13,22 @@
                     <th class="text-center"></th>
                 </tr>
             </thead>
-            <tr>
-                <td>1</td>
-                <td>아메리카노</td>
-                <td>3,000</td>
-                <td>쓴 아메리카노</td>
+            <tbody>
+              <tr ng-repeat="menu in $ctrl.menus track by $index">
+                <td>{{$index+1}}</td>
+                <td>{{menu.name}}</td>
+                <td>{{menu.price}}</td>
+                <td>{{menu.description}}</td>
                 <td class="text-center">
-                    <a class='btn btn-info btn-xs' href="#" data-toggle="modal" data-target="#myEditModal" ng-click="$ctrl.openModal()">
-                        <span class="glyphicon glyphicon-edit white"></span>편집</a>
-                    <a href="#" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myDeleteModal">
-                        <span class="glyphicon glyphicon-remove white"></span>삭제</a>
+                  <a class='btn btn-info btn-xs' href="#" ng-click="$ctrl.openMenuUpdateModal()">
+                    <span class="glyphicon glyphicon-edit white"></span>편집</a>
+                  <a href="#" class="btn btn-danger btn-xs" ng-click="$ctrl.delMenu($event, menu.id)">
+                    <span class="glyphicon glyphicon-remove white"></span>삭제</a>
                 </td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>아메리카노</td>
-                <td>3,000</td>
-                <td>쓴 아메리카노</td>
-                <td class="text-center">
-                    <a class='btn btn-info btn-xs' href="#" data-toggle="modal" data-target="#myEditModal" ng-click="$ctrl.openModal()">
-                        <span class="glyphicon glyphicon-edit"></span>편집</a>
-                    <a href="#" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myDeleteModal">
-                        <span class="glyphicon glyphicon-remove"></span>삭제</a>
-                </td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>아메리카노</td>
-                <td>3,000</td>
-                <td>쓴 아메리카노</td>
-                <td class="text-center">
-                    <a class='btn btn-info btn-xs' href="#" data-toggle="modal" data-target="#myEditModal" ng-click="$ctrl.openModal()">
-                        <span class="glyphicon glyphicon-edit"></span>편집</a>
-                    <a href="#" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myDeleteModal">
-                        <span class="glyphicon glyphicon-remove"></span>삭제</a>
-                </td>
-            </tr>
+              </tr>
+            </tbody>
         </table>
-        <div class="col-md-12 right">
+        <!-- <div class="col-md-12 right">
             <form>
                 <div class="col-md-3"></div>
                 <div class="col-md-3"></div>
@@ -68,7 +46,7 @@
                     </div>
                 </div>
             </form>
-        </div>
+        </div> -->
     </div>
 
 </div>
