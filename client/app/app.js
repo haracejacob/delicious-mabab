@@ -1,10 +1,11 @@
 'use strict';
 
 import angular from 'angular'
-// import ngAnimate from 'angular-animate';
+import ngAnimate from 'angular-animate'
 import ngCookies from 'angular-cookies'
 import ngResource from 'angular-resource'
 import ngMaterial from 'angular-material'
+import ngAria from 'angular-aria'
 // import ngSanitize from 'angular-sanitize';
 
 import uiRouter from 'angular-ui-router'
@@ -64,7 +65,7 @@ import './app.css'
 
 angular.module('deliciousMababApp', [
   // modules
-  uiRouter, ngResource, ngCookies, uiBootstrap, ngMaterial,
+  uiRouter, ngResource, ngCookies, uiBootstrap, ngMaterial, ngAria, ngAnimate,
   // user side pages
   main, account, reservation, menu,
   // admin side pages

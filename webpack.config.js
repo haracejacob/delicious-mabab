@@ -13,6 +13,8 @@ export default {
       'angular-cookies',
       'angular-ui-bootstrap',
       'angular-material',
+      'angular-animate',
+      'angular-aria',
       'lodash'
     ]
   },
