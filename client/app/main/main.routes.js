@@ -3,6 +3,11 @@ export default function routes($stateProvider) {
 
   $stateProvider.state('main', {
     url: '/',
-    template: '<main></main>'
+    template: '<main></main>',
+    resolve: {
+      auth: async AuthService => {
+        await AuthService.hasRole('user', true)
+      }
+    }
   })
 }

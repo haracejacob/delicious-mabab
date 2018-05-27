@@ -10,7 +10,7 @@
 			예상 준비 완료 시간 : 23시 61분<br>
 		</div>
 	</div>
-  
+
   <div class="col-sm-3"></div>
   <div class="col-sm-6" style="text-align:center;">
     <h2 style="margin-top:0px;">마이페이지</h2><br>
@@ -21,37 +21,21 @@
       <thead>
         <tr>
           <th class="text-center">구매날짜</th>
-          <th class="text-center">구매상품</th>
           <th class="text-center">수량</th>
+          <th class="text-center">총 금액</th>
+          <th class="text-center">진행상황</th>
         </tr>
       </thead>
-      <tr>
-        <td>2018-04-01 11:02:25</td>
-        <td>아메리카노</td>
-        <td>2</td>
-      </tr>
-      <tr>
-        <td>2018-04-01 11:02:25</td>
-        <td>아메리카노</td>
-        <td>4</td>
-      </tr>
-      <tr>
-        <td>2018-04-01 11:02:25</td>
-        <td>아메리카노</td>
-        <td>4</td>
-      </tr>
-      <tr>
-        <td>2018-04-01 11:02:25</td>
-        <td>아메리카노</td>
-        <td>3</td>
-      </tr>
-      <tr>
-        <td>2018-04-01 11:02:25</td>
-        <td>아메리카노</td>
-        <td>6</td>
+      <tr ng-repeat="reservation in $ctrl.sumaryReservation" ng-click="$ctrl.openMainDetailModal(reservation.reservation)">
+        <td>{{reservation.createdAt}}</td>
+        <td>{{reservation.numProduct}}</td>
+        <td>{{reservation.amount}}</td>
+        <td ng-if="reservation.status == 0"><b>대기</b></td>
+        <td ng-if="reservation.status == 1" style="color: green"><b>완료</b></td>
+        <td ng-if="reservation.status == 2" style="color: red"><b>삭제</b></td>
       </tr>
    	</table>
 	</div>
-  
+
   <div class="col-sm-3"></div>
 </div>

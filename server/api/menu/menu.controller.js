@@ -1,3 +1,5 @@
+import path from 'path'
+
 import { Menu, Category } from '../../config/db'
 import config from '../../config/environment'
 
@@ -43,13 +45,8 @@ export async function show(req, res) {
 }
 
 export async function create(req, res) {
+  req.body.img = path.join('assets/.tmp/', req.file.filename)
   const newMenu = Menu.build(req.body)
-  console.log(newMenu)
-  console.log(req.file)
-  res.status(200).end()
-  // 1. file upload
-
-  // 2. menu create
   const menu = await newMenu.save()
 
   res.status(201).json(menu)

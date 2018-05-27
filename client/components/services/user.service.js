@@ -2,12 +2,7 @@ export default function UserService($resource) {
   'ngInject'
 
   const UserResource = $resource('/api/user/:id', {
-    id: '@id',
-    name: '@name',
-    email: '@email',
-    role: '@role',
-    password: '@password',
-    salt: '@salt'
+    id: '@id'
   }, {
     me: {
       method: 'GET',
@@ -16,6 +11,10 @@ export default function UserService($resource) {
     changePassword: {
       method: 'PUT',
       url: '/api/user/:id/password',
+    },
+    change: {
+      method: 'PUT',
+      url: '/api/user/:id',
     },
     login: {
       method: 'POST',

@@ -10,9 +10,9 @@ export default (sequelize, DataTypes) => {
     amount: {
       type: DataTypes.INTEGER
     },
-    reservationTime: {
-      type: DataTypes.DATE
-    },
+    // reservationTime: {
+    //   type: DataTypes.DATE
+    // },
     additionalNotice: {
       type: DataTypes.TEXT,
       allowNull: true

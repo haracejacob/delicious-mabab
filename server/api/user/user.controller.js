@@ -15,7 +15,6 @@ export async function index(req, res) {
       'name',
       'email',
       'role',
-      'provider'
     ]
   });
 
@@ -26,6 +25,18 @@ export async function index(req, res) {
  * Creates a new user
  */
 export async function create(req, res) {
+  // 중복 체크
+  const validUser = await User.find({
+    where: {
+      email: req.body.email,
+    },
+  })
+  if (validUser) {
+    return res.status(404).send({
+      msg: '이미 존재하는 이메일 입니다.'
+    })
+  }
+
   const newUser = User.build(req.body);
   newUser.setDataValue('role', 'user')
 
@@ -91,6 +102,29 @@ export async function changePassword(req, res) {
   }
 }
 
+export async function change(req, res) {
+  const userId = req.params.id;
+
+  const user = await User.find({
+    where: {
+      id: userId
+    }
+  })
+
+  if (user) {
+    user.email = req.body.email ? req.body.email : user.email
+    user.name = req.body.name ? req.body.name : user.name
+    user.role = req.body.role ? req.body.role : user.role
+    user.password = req.body.password ? req.body.password : user.password
+
+    await user.save()
+
+    res.status(204).end()
+  } else {
+    res.statsu(404).end()
+  }
+}
+
 /**
  * Get my info
  */
@@ -111,8 +145,6 @@ export async function me(req, res) {
   if (!user) {
     return res.status(401).end();
   }
-  console.log(123213213213)
-  console.log(user)
   res.json(user);
 }
 

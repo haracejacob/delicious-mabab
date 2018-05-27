@@ -7,7 +7,7 @@ class _User {
   role = ''
 }
 
-export default function AuthService($location, $cookies, $q, UserService) {
+export default function AuthService($state, $location, $cookies, $q, UserService) {
   let currentUser = new _User()
 
   if ($cookies.get('token') && $location.path() !== '/logout') {
@@ -20,18 +20,22 @@ export default function AuthService($location, $cookies, $q, UserService) {
       email,
       password,
     }) {
-      return new Promise(async resolve => {
-        const res = await UserService.login({
-          email,
-          password
-        }).$promise
-        $cookies.put('token', res.token)
+      return new Promise(async (resolve, reject) => {
+        try {
+          const res = await UserService.login({
+            email,
+            password
+          }).$promise
+          $cookies.put('token', res.token)
 
-        const user = await UserService.me().$promise;
+          const user = await UserService.me().$promise;
 
-        currentUser = user
+          currentUser = user
 
-        resolve(currentUser)
+          resolve(currentUser)
+        } catch (err) {
+          reject(err.data)
+        }
       })
     },
 
@@ -41,13 +45,17 @@ export default function AuthService($location, $cookies, $q, UserService) {
     },
 
     async createUser(user) {
-      return new Promise(async resolve => {
-        const data = await UserService.save(user).$promise
-        $cookies.put('token', data.token)
+      return new Promise(async (resolve, reject) => {
+        try {
+          const data = await UserService.save(user).$promise
+          $cookies.put('token', data.token)
 
-        currentUser = await UserService.me().$promise
-
-        resolve(currentUser)
+          const me = await UserService.me().$promise
+          currentUser = me
+          resolve(currentUser)
+        } catch (err) {
+          reject(err.data)
+        }
       })
     },
 
@@ -79,12 +87,35 @@ export default function AuthService($location, $cookies, $q, UserService) {
       })
     },
 
-    isLoggedIn() {
+    isLoggedIn(redirect = false) {
       return new Promise(async resolve => {
         const user = await Auth.getCurrentUser()
         const role = _.get(user, 'role')
 
         resolve(!!role)
+
+        if (redirect && !!role) {
+          $state.go('main')
+        }
+      })
+    },
+
+    hasRole(role, redirect = false) {
+      return new Promise(async resolve => {
+        const user = await Auth.getCurrentUser()
+        const userRole = _.get(user, 'role')
+
+        if (userRole == 'admin') {
+          resolve(true)
+        } else {
+          const hasRole = role === userRole
+
+          resolve(hasRole)
+
+          if (redirect && !hasRole) {
+            $state.go('login')
+          }
+        }
       })
     },
 

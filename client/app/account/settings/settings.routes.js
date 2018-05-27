@@ -4,6 +4,10 @@ export default $stateProvider => {
   $stateProvider.state('settings', {
     url: '/settings',
     template: '<settings></settings>',
-    authenticate: true
+    resolve: {
+      auth: async AuthService => {
+        await AuthService.hasRole('user', true)
+      }
+    }
   });
 }

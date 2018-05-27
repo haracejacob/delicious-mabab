@@ -19,66 +19,32 @@
 	<div class="container-fluid col-sm-4" style="margin:0px;">
 		<div class="col-sm-12" style="margin:0px;margin-top:10px;margin-bottom:30px;padding:20px;box-shadow:0px 2px 14px rgba(0,0,0,0.2);">
 			<h2>영수증</h2>
-			<hr style="width:100%;margin-bottom:-30px;">
-			<div ng-if="count[0]>0">
-				<hr style="width:100%;opacity:0;">
-				<h5 style="float:left;">아메리카노<br><button ng-click="count[0]=count[0]-1" class="btn btn-sm btn-warning plusMinus">-</button> {{count[0]}}개 <button ng-click="count[0]=count[0]+1" class="btn btn-sm btn-warning plusMinus">+</button>
-				</h5>
-				<h5 style="float:right;">₩ {{3000*count[0]}}<br></h5>
-			</div>
-			<div ng-if="count[1]>0">
-				<hr style="width:100%;opacity:0;">
-				<h5 style="float:left;">카푸치노<br><button ng-click="count[1]=count[1]-1" class="btn btn-sm btn-warning plusMinus">-</button> {{count[1]}}개 <button ng-click="count[1]=count[1]+1" class="btn btn-sm btn-warning plusMinus">+</button></h5>
-				<h5 style="float:right;">₩ {{3000*count[1]}}<br></h5>
-			</div>
-			<div ng-if="count[2]>0">
-				<hr style="width:100%;opacity:0;">
-				<h5 style="float:left;">티라미수<br><button ng-click="count[2]=count[2]-1" class="btn btn-sm btn-warning plusMinus">-</button> {{count[2]}}개 <button ng-click="count[2]=count[2]+1" class="btn btn-sm btn-warning plusMinus">+</button></h5>
-				<h5 style="float:right;">₩ {{3000*count[2]}}<br></h5>
-			</div>
-			<hr style="width:100%;">
-			<h5 style="float:right;">합계 : ₩ {{3000*count[0]+3000*count[1]+3000*count[2]}}</h5>
-			<a href="#" class="btn btn-warning" onclick="popup('id','아메리카노','3000원');" style="width:100%;">예약하기</a>
+      <hr style="width:100%;margin-bottom:-30px;">
+      <div ng-repeat="reservationMenu in $ctrl.reservation.reservationMenu">
+          <hr style="width:100%;opacity:0;">
+          <h5 style="float:left;">{{reservationMenu.name}}<br>
+            <button ng-click="$ctrl.minus(reservationMenu.menuId)" class="btn btn-sm btn-warning plusMinus">-</button>
+            {{reservationMenu.count}}개
+            <button ng-click="$ctrl.plus(reservationMenu.menuId)" class="btn btn-sm btn-warning plusMinus">+</button>
+          </h5>
+          <h5 style="float:right;">₩ {{reservationMenu.price*reservationMenu.count}}<br></h5>
+      </div>
+      <hr style="width:100%;">
+      <textarea style="resize:none;width:100%;border-radius:10px;height:60px;" ng-model="$ctrl.reservation.additionalNotice"></textarea>
+			<h5 style="float:right;">합계 : ₩ {{$ctrl.reservation.amount}}</h5>
+			<a href="#" class="btn btn-warning" ng-click="$ctrl.order()" style="width:100%;">예약하기</a>
 		</div>
 	</div>
 	<div class="container-fluid col-sm-8 row" style="padding:0px;margin:0px;">
-
-		<div class="container-fluid col-sm-4" style="padding:0px;margin:0px;">
-			<div class="career card container-fluid" style="padding:14px;width:80%;border-radius:6px;border:0px solid #ccc;margin-bottom:30px;text-align:center;">
-				<img class="card-img-top" src="../../assets/img/coffee.jpg" style="width:100px;height:100px;margin:auto;">
-				<div class="card-body" style="text-align:center;">
-					<h5 class="card-title"><b>아메리카노</b></h5>
-					<h6>음료</h6>
-					<a href="#" ng-click="count[0]=count[0]+1" class="btn btn-warning">&#8361;3000</a>
-				</div>
-			</div>
-		</div>
-
-		<div class="container-fluid col-sm-4" style="padding:0px;margin:0px;">
-			<div class="career card container-fluid" style="padding:14px;width:80%;border-radius:6px;border:0px solid #ccc;margin-bottom:30px;text-align:center;">
-				<img class="card-img-top" src="../../assets/img/coffee2.jpg" style="width:100px;height:100px;margin:auto;">
-				<div class="card-body" style="text-align:center;">
-					<h5 class="card-title"><b>카푸치노</b></h5>
-					<h6>음료</h6>
-					<a href="#" ng-click="count[1]=count[1]+1" class="btn btn-warning">&#8361;3000</a>
-				</div>
-			</div>
-		</div>
-
-		<div class="container-fluid col-sm-4" style="padding:0px;margin:0px;">
-			<div class="career card container-fluid" style="padding:14px;width:80%;border-radius:6px;border:0px solid #ccc;margin-bottom:30px;text-align:center;">
-				<img class="card-img-top" src="../../assets/img/tiramisu.jpg" style="width:100px;height:100px;margin:auto;">
-				<div class="card-body" style="text-align:center;">
-					<h5 class="card-title"><b>티라미수</b></h5>
-					<h6>디저트</h6>
-					<a href="#" ng-click="count[2]=count[2]+1" class="btn btn-warning">&#8361;3000</a>
-				</div>
-			</div>
-		</div>
-
-
-
-
-
+    <div class="container-fluid col-sm-4" style="padding:0px;margin:0px;" ng-repeat="menu in $ctrl.menus">
+      <div class="career card container-fluid" style="padding:14px;width:80%;border-radius:6px;border:0px solid #ccc;margin-bottom:30px;text-align:center;">
+        <img class="card-img-top" ng-src="{{menu.img}}" style="width:100px;height:100px;margin:auto;">
+        <div class="card-body" style="text-align:center;">
+          <h5 class="card-title"><b>{{menu.name}}</b></h5>
+          <h6>{{menu.category.name}}</h6>
+          <a href="#" ng-click="$ctrl.add(menu)" class="btn btn-warning">&#8361;{{menu.price}}</a>
+        </div>
+      </div>
+    </div>
 	</div>
 </div>

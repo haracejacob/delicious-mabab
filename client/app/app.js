@@ -6,6 +6,7 @@ import ngCookies from 'angular-cookies'
 import ngResource from 'angular-resource'
 import ngMaterial from 'angular-material'
 import ngAria from 'angular-aria'
+import angularFileUpload from 'angular-file-upload'
 // import ngSanitize from 'angular-sanitize';
 
 import uiRouter from 'angular-ui-router'
@@ -65,7 +66,7 @@ import './app.css'
 
 angular.module('deliciousMababApp', [
   // modules
-  uiRouter, ngResource, ngCookies, uiBootstrap, ngMaterial, ngAria, ngAnimate,
+  uiRouter, ngResource, ngCookies, uiBootstrap, ngMaterial, ngAria, ngAnimate, 'angularFileUpload',
   // user side pages
   main, account, reservation, menu,
   // admin side pages
@@ -76,10 +77,12 @@ angular.module('deliciousMababApp', [
   services,
 ])
   .config(routing)
-  .run(($rootScope, $location, $state, $transitions) => {
+  .run(($rootScope, $location, $transitions) => {
     'ngInject'
 
-    $transitions.onSuccess({}, function(transition) {
+    $transitions.onSuccess({}, async transition => {
+      $rootScope.status = 'login'
+
       const current = transition.to().name
 
       if (['login', 'signup'].includes(current)) {

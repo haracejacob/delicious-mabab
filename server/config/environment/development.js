@@ -3,7 +3,7 @@ import path from 'path'
 // Development specific configuration
 // ==================================
 export default {
-  uploadPath: path.join(__dirname, '../../.tmp'),
+  uploadPath: path.join(__dirname, '../../../client/assets/.tmp'),
   // Sequelize connection opions
   sequelize: {
     database: 'dev_mabab',

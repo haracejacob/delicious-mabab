@@ -1,12 +1,19 @@
 import _ from 'lodash'
-import db, { Reservation, ReservationMenu } from '../../config/db'
+import db, { Reservation, ReservationMenu, Menu } from '../../config/db'
 
 export async function index(req, res) {
-  const reservations = await Reservation.findAll({
+  const query = {
     include: {
       model: ReservationMenu,
     },
-  })
+  }
+
+  if (req.body.userId) {
+    query.where = {}
+    query.where.userId = req.body.userId
+  }
+
+  const reservations = await Reservation.findAll(query)
 
   res.status(200).json(reservations)
 }
@@ -35,12 +42,14 @@ export async function create(req, res) {
     const newReservation = Reservation.build(req.body)
     newReservation.setDataValue('status', 0)
 
-    promises.push(newReservation.save({ transaction }))
+    const reservation = await newReservation.save({ transaction })
+    promises.push()
 
-    req.body.reservationMenus.forEach(val => {
-      const reservationMenu = ReservationMenu.build(val)
+    req.body.reservationMenu.forEach(val => {
+      const newReservationMenu = ReservationMenu.build(val)
+      newReservationMenu.setDataValue('reservationId', reservation.id)
 
-      promises.push(reservationMenu.save({ transaction }))
+      promises.push(newReservationMenu.save({ transaction }))
     })
 
     const result = await Promise.all(promises)

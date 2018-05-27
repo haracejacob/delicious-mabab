@@ -3,58 +3,54 @@
         <div class="col-md-6">
 
             <!-- Modal content-->
-
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" ng-click="cancel()">×</button>
+                <button type="button" class="close" data-dismiss="modal" ng-click="$ctrl.cancel()">×</button>
                 <h4 class="modal-title">상품 추가</h4>
             </div>
 
-
             <div class="modal-body">
                 <form>
-
                     <!-- 종류 -->
                     <div class="form-group">
                         <label class="control-label" for="selectbasic">종류</label>
-                        <select id="selectbasic" name="selectbasic" class="form-control">
-              <option>음료</option>
-              <option>디저트</option>
-            </select>
+                        <select id="selectbasic" name="selectbasic" class="form-control" ng-model="$ctrl.menu.category">
+                          <option value=2>음료</option>
+                          <option value=1>디저트</option>
+                        </select>
                     </div>
 
                     <!-- M상품 이름 -->
                     <div class="form-group">
                         <label class="control-label" for="productName">상품 이름</label>
-                        <input type="text" class="form-control" name="productName" />
+                        <input type="text" class="form-control" name="productName" ng-model="$ctrl.menu.name"/>
                     </div>
 
                     <!-- 상품 이미지 -->
                     <div class="form-group">
                         <label class="control-label" for="productImage">이미지</label>
-                        <input type="file" class="form-control" name="productImage" />
+                        <!-- <input type="file" class="form-control" name="productImage" /> -->
+                        <input type="file" class="form-control" nv-file-select="" uploader="$ctrl.uploader"/>
                     </div>
 
                     <!-- 가격 -->
                     <div class="form-group">
                         <label class="control-label" for="productPrice">상품 가격</label>
-                        <input type="number" class="form-control" name="productPrice" />
+                        <input type="number" class="form-control" name="productPrice" ng-model="$ctrl.menu.price"/>
                     </div>
 
                     <!-- 가격 -->
                     <div class="form-group">
                         <label class="control-label" for="productDescription">상품 설명</label>
-                        <textarea class="form-control" name="productDescription" />
+                        <textarea class="form-control" name="productDescription" ng-model="$ctrl.menu.description"/>
                     </div>
 
                 </form>
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" ng-click="cancel()">취소</button>
-                <button type="button" class="btn btn-success">편집</button>
+                <button type="button" class="btn btn-default" ng-click="$ctrl.cancel()">취소</button>
+                <button type="button" class="btn btn-success" ng-click="$ctrl.create()">추가</button>
             </div>
-
-
         </div>
     </div>
 </div>
