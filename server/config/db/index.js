@@ -44,9 +44,14 @@ Reservation.belongsToMany(Menu, {
 Menu.belongsToMany(Reservation, {
   through: ReservationMenu,
   foreignKey: 'menuId',
-  onDelete: 'NO ACTION',
+  onDelete: 'CASCADE',
   onUpdate: 'CASCADE'
 })
+//Menu.hasMany(ReservationMenu)
+Reservation.hasMany(ReservationMenu)
+Menu.hasMany(ReservationMenu)
+//Menu.hasOne(ReservationMenu)
+
 
 export default db;
 export {User, Reservation, Menu, ReservationMenu, Category }

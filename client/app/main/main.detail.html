@@ -1,0 +1,20 @@
+<div class="container-fluid row" style="line-height:40px;margin-bottom:20px;">
+  <div class="col-sm-12">{{$ctrl.reservations.createdAt}}</div>
+  <div class="col-sm-6">총 {{$ctrl.reservations.amount}}원</div>
+  <div class="col-sm-6">
+    <td ng-if="$ctrl.reservations.status == 0"><b>대기</b></td>
+    <td ng-if="$ctrl.reservations.status == 1" style="color: green"><b>완료</b></td>
+    <td ng-if="$ctrl.reservations.status == 2" style="color: red"><b>삭제</b></td>
+  </div>
+  <hr style="width:100%;">
+
+
+  <div ng-repeat="menu in $ctrl.menus">
+    <hr style="width:100%;opacity:0;">
+    <div class="col-sm-3"><img style="width:40px;height:40px;" ng-src="{{menu.menu.img}}"></div>
+    <div class="col-sm-3">{{menu.menu.name}}</div>
+    <div class="col-sm-2">{{menu.menu.price}}원</div>
+    <div class="col-sm-2">{{menu.reservationMenu.count}}개</div>
+    <div class="col-sm-2">총 {{menu.menu.price*menu.reservationMenu.count}}원</div>
+  </div>
+</div>
